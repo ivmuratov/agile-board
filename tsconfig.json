@@ -1,0 +1,55 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext",
+    ],
+    /**
+      strict checks
+    */
+    "strict": false, //true - включает все флаги строгости в true
+    "alwaysStrict": true, //добавление строки "use strict" в каждый скомпилированный файл (не влиеят на проверку типов TS)
+    "noImplicitAny": true, //должны явно прописывать any, будет подсвечивать если не указали тип
+    "strictNullChecks": true, //не позволяет передавать undefined или null туда, где ожидаются переменные других типов, если это не разрешено явно
+    "strictPropertyInitialization": true, //объявленные свойства класса всегда должны быть инициализированы
+    "strictFunctionTypes": true, //включает более строгую проверку сигнатур функций
+    "noImplicitThis": true, //при использовании this проверяет, что контекст выполнения известен
+    "strictBindCallApply": true, //более строгую проверку сигнатур при использовании bind, call, apply
+    /**
+      linter checks
+    */
+    "noPropertyAccessFromIndexSignature": true, //запрещает обращаться к свойствам объекта через точку, если свойства объекта описаны не явно, а через произвольные параметры (foo['bar'])
+    "noUncheckedIndexedAccess": false, //обращение к элементу массива будет иметь тип Type | undefined
+    "noImplicitReturns": true, //все ветки функции должны возвращать значение
+    "noFallthroughCasesInSwitch": true, //проверяет break в switch-case
+    "noUnusedLocals": false, //проверка на неиспользуемые переменные
+    "noUnusedParameters": false, //проверка на неиспользуемые аргументы функций
+
+    "allowUnreachableCode": true, //запрещает код, написанный после операторов return, throw, break, continue
+    "allowUnusedLabels": true, //запрещает неиспользуемые лэйблы
+    /**
+      advanced checks
+    */    
+    "noImplicitUseStrict": false, //автоматически добавляет "use strict" если target версия меньше, чем ES6
+    "suppressExcessPropertyErrors": false, //объект не мог содержать свойства, которые не были описаны в его структуре
+    "suppressImplicitAnyIndexErrors": false, //проверяет, что используя скобочную нотацию невозможно обращаться к свойствам объекта, которые в нём не объявлены ни явно, ни через произвольные параметры.
+    "noStrictGenericChecks": false, //компилятор более "лояльно" при работе с generics
+    "allowSyntheticDefaultImports": true,    
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",    
+  ],
+  "exclude": [
+    "node_modules",    
+    "public",
+    "webpack",
+    ".vscode",
+  ],  
+}

@@ -1,19 +1,24 @@
 import { FC } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import INavLink from '../../types/INavLink';
 
 const links: Array<INavLink> = [
   {
     name: 'Проект',
-    href: '#',
+    href: '/',
   },
   {
     name: 'Доска',
-    href: '#',
+    href: '/board',
   },
   {
     name: 'Команда',
-    href: '#',
+    href: '/team',
+  },
+  {
+    name: 'Список задач',
+    href: '/task-list',
   },
 ];
 
@@ -25,12 +30,16 @@ const MainHeader: FC = () => {
         <ul className='flex space-x-5'>
           {links.map((item, index) => (
             <li key={index}>
-              <a
-                className='pb-3 opacity-60 hover:border-b-2 hover:border-b-blue-500/70 hover:opacity-90'
-                href={item.href}
+              <NavLink
+                to={item.href}
+                className={({ isActive }) =>
+                  isActive
+                    ? 'pb-3 opacity-90 border-b-2 border-b-blue-500'
+                    : 'pb-3 opacity-60 hover:border-b-2 hover:border-b-blue-500/70 hover:opacity-90'
+                }
               >
                 {item.name}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>

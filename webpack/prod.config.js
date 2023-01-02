@@ -81,6 +81,10 @@ module.exports = merge(common, {
           test: /[\\/]node_modules[\\/](redux|react-redux|@reduxjs)[\\/]/,
           name: 'redux',
         },
+        router: {
+          test: /[\\/]node_modules[\\/](react-router-dom|react-router)[\\/]/,
+          name: 'router',
+        },
       },
     },
     minimizer: [

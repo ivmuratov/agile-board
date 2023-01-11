@@ -12,3 +12,5 @@ const ProjectMain: FC = () => {
     </Fragment>
   );
 };
+
+export default ProjectMain;

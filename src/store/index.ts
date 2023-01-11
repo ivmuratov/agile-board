@@ -1,8 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import testReducer from './reducers/testReducer';
+import agileTaskReducer from './reducers/agileTaskSlice';
+import projectReducer from './reducers/projectSlice';
+import testReducer from './reducers/testSlice';
 
 const rootReducer = combineReducers({
+  projectReducer,
+  agileTaskReducer,
   testReducer,
 });
 

@@ -1,23 +1,31 @@
 import { FC } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg';
-import INavLink from '../../types/INavLink';
+import INavLinkType from '../../types/INavLinkType';
 import Container from '../UI/Container';
 
-const links: Array<INavLink> = [
+const links: Array<INavLinkType> = [
   {
-    name: 'Инфо',
-    href: '#',
+    id: '0',
+    name: 'Проекты',
+    path: '/projects',
   },
   {
+    id: '1',
+    name: 'Инфо',
+    path: '#',
+  },
+  {
+    id: '2',
     name: 'Мой профиль',
-    href: '#',
+    path: '#',
   },
 ];
 
 const Header: FC = () => {
   return (
-    <header className='h-14 border bg-white'>
+    <header className='mb-4 h-14 border bg-white'>
       <Container>
         <div className='flex h-full items-center justify-between'>
           <div className='flex items-center space-x-2'>
@@ -26,9 +34,9 @@ const Header: FC = () => {
           </div>
           <nav>
             <ul className='flex space-x-3'>
-              {links.map((item, index) => (
-                <li key={index}>
-                  <a href={item.href}>{item.name}</a>
+              {links.map(({ id, name, path }) => (
+                <li key={id}>
+                  <NavLink to={path}>{name}</NavLink>
                 </li>
               ))}
             </ul>

@@ -1,11 +1,12 @@
 import { skipToken } from '@reduxjs/toolkit/dist/query';
-import { FC, Fragment } from 'react';
+import { FC, Fragment, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useGetAgileTaskListQuery } from '../../services/agileTaskService';
 import IParamsType from '../../types/IParamsType';
 import ITableColumn from '../../types/ITableColumn';
 import EmptyTable from '../EmptyTable/EmptyTable';
+import Modal from '../UI/Modal';
 import Table from '../UI/Table';
 
 const columns: ITableColumn[] = [
@@ -56,11 +57,25 @@ const AgileTaskListTable: FC = () => {
 
   const { data, isLoading } = useGetAgileTaskListQuery(projectId ?? skipToken);
 
+  const [activeModal, setActiveModal] = useState(false);
+
+  const openModal = () => {
+    setActiveModal(true);
+  };
+
+  const closeModal = () => {
+    setActiveModal(false);
+  };
+
   return (
     <Fragment>
       {isLoading && <div>... is loading</div>}
       {data && data.length === 0 && !isLoading && (
-        <EmptyTable title='Нет задач в проекте' buttonTitle='Создать задачу' />
+        <EmptyTable
+          title='Нет задач в проекте'
+          buttonTitle='Создать задачу'
+          buttonAction={openModal}
+        />
       )}
       {data && data.length !== 0 && !isLoading && (
         <Table
@@ -126,6 +141,9 @@ const AgileTaskListTable: FC = () => {
           )}
         />
       )}
+      <Modal active={activeModal} setInactive={closeModal} title='Создать задачу'>
+        <div>123</div>
+      </Modal>
     </Fragment>
   );
 };

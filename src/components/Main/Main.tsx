@@ -4,7 +4,7 @@ import { useRoutes } from 'react-router-dom';
 import Container from '../UI/Container';
 
 const ProjectListTable = lazy(() => import('../ProjectListTable/ProjectListTable'));
-const ProjectHeader = lazy(() => import('../ProjectHeader/ProjectHeader'));
+const ProjectMain = lazy(() => import('../ProjectMain/ProjectMain'));
 const ProjectInfo = lazy(() => import('../ProjectInfo/ProjectInfo'));
 const AgileBoard = lazy(() => import('../AgileBoard/AgileBoard'));
 const AgileTaskListTable = lazy(() => import('../AgileTaskListTable/AgileTaskListTable'));
@@ -15,7 +15,7 @@ const Main: FC = () => {
     { path: '/projects', element: <ProjectListTable /> },
     {
       path: '/projects/:projectId',
-      element: <ProjectHeader />,
+      element: <ProjectMain />,
       children: [
         { index: true, element: <ProjectInfo /> },
         { path: 'board', element: <AgileBoard /> },

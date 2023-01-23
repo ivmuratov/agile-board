@@ -1,16 +1,27 @@
+import { skipToken } from '@reduxjs/toolkit/dist/query';
 import { FC, Fragment } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 
+import { useGetProjectByIdQuery } from '../../services/projectService';
+import IParamsType from '../../types/IParamsType';
+import NotFound from '../NotFound/NotFound';
 import ProjectHeader from '../ProjectHeader/ProjectHeader';
 
-//TODO сделать валидацию на projectId
 const ProjectMain: FC = () => {
-  return (
-    <Fragment>
-      <ProjectHeader />
-      <Outlet />
-    </Fragment>
-  );
+  const { projectId } = useParams<IParamsType>();
+
+  const { data, isError } = useGetProjectByIdQuery(projectId ?? skipToken);
+
+  if (isError) {
+    return <NotFound />;
+  } else {
+    return (
+      <Fragment>
+        {projectId && data && <ProjectHeader projectTitle={data.name} projectId={projectId} />}
+        {data && <Outlet />}
+      </Fragment>
+    );
+  }
 };
 
 export default ProjectMain;

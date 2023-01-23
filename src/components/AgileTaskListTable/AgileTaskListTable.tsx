@@ -1,8 +1,8 @@
-import { FC, Fragment, useEffect } from 'react';
+import { skipToken } from '@reduxjs/toolkit/dist/query';
+import { FC, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { useActions } from '../../hooks/useActions';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useGetAgileTaskListQuery } from '../../services/agileTaskService';
 import IParamsType from '../../types/IParamsType';
 import ITableColumn from '../../types/ITableColumn';
 import EmptyTable from '../EmptyTable/EmptyTable';
@@ -54,27 +54,18 @@ const columns: ITableColumn[] = [
 const AgileTaskListTable: FC = () => {
   const { projectId } = useParams<IParamsType>();
 
-  const { agileTaskList, isLoading } = useTypedSelector(state => state.agileTaskReducer);
-
-  const { fetchAgileTaskList } = useActions();
-
-  useEffect(() => {
-    if (projectId) {
-      fetchAgileTaskList(projectId);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { data, isLoading } = useGetAgileTaskListQuery(projectId ?? skipToken);
 
   return (
     <Fragment>
       {isLoading && <div>... is loading</div>}
-      {agileTaskList && agileTaskList.length === 0 && !isLoading && (
+      {data && data.length === 0 && !isLoading && (
         <EmptyTable title='Нет задач в проекте' buttonTitle='Создать задачу' />
       )}
-      {agileTaskList && agileTaskList.length !== 0 && !isLoading && (
+      {data && data.length !== 0 && !isLoading && (
         <Table
           columns={columns}
-          rows={agileTaskList.map(
+          rows={data.map(
             ({
               _id,
               name,
@@ -124,11 +115,11 @@ const AgileTaskListTable: FC = () => {
                 },
                 {
                   id: '8',
-                  value: updatedDate ? updatedDate : '-',
+                  value: updatedDate || '-',
                 },
                 {
                   id: '9',
-                  value: finishedDate ? finishedDate : '-',
+                  value: finishedDate || '-',
                 },
               ],
             }),

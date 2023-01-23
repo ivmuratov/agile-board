@@ -1,8 +1,7 @@
-import { FC, Fragment } from 'react';
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { FC } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import INavLinkType from '../../types/INavLinkType';
-import IParamsType from '../../types/IParamsType';
 
 const links: Array<INavLinkType> = [
   {
@@ -28,35 +27,35 @@ const links: Array<INavLinkType> = [
   },
 ];
 
-const ProjectHeader: FC = () => {
-  const { projectId } = useParams<IParamsType>();
+interface IProps {
+  projectTitle: string;
+  projectId: string;
+}
 
+const ProjectHeader: FC<IProps> = ({ projectTitle, projectId }) => {
   return (
-    <Fragment>
-      <header className='mb-5'>
-        <h3 className='mb-2 text-2xl'>Мегапроект</h3>
-        <nav className='border-b pb-3'>
-          <ul className='flex space-x-5'>
-            {links.map(({ id, name, path, end }) => (
-              <li key={id}>
-                <NavLink
-                  to={`/projects/${projectId}${path}`}
-                  end={end}
-                  className={({ isActive }) =>
-                    isActive
-                      ? 'pb-3 opacity-90 border-b-2 border-b-blue-500'
-                      : 'pb-3 opacity-60 hover:border-b-2 hover:border-b-blue-500/70 hover:opacity-90'
-                  }
-                >
-                  {name}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </header>
-      <Outlet />
-    </Fragment>
+    <header className='mb-5'>
+      <h3 className='mb-2 text-2xl'>{projectTitle}</h3>
+      <nav className='border-b pb-3'>
+        <ul className='flex space-x-5'>
+          {links.map(({ id, name, path, end }) => (
+            <li key={id}>
+              <NavLink
+                to={`/projects/${projectId}${path}`}
+                end={end}
+                className={({ isActive }) =>
+                  isActive
+                    ? 'pb-3 opacity-90 border-b-2 border-b-blue-500'
+                    : 'pb-3 opacity-60 hover:border-b-2 hover:border-b-blue-500/70 hover:opacity-90'
+                }
+              >
+                {name}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
   );
 };
 

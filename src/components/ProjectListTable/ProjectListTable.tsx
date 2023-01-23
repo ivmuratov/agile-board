@@ -1,8 +1,7 @@
-import { FC, Fragment, useEffect } from 'react';
+import { FC, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { useActions } from '../../hooks/useActions';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useGetProjectListQuery } from '../../services/projectService';
 import ITableColumn from '../../types/ITableColumn';
 import EmptyTable from '../EmptyTable/EmptyTable';
 import Table from '../UI/Table';
@@ -27,14 +26,7 @@ const columns: ITableColumn[] = [
 ];
 
 const ProjectListTable: FC = () => {
-  const { projects, isLoading } = useTypedSelector(state => state.projectReducer);
-
-  const { fetchProjects } = useActions();
-
-  useEffect(() => {
-    fetchProjects();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { data, isLoading } = useGetProjectListQuery();
 
   return (
     <Fragment>
@@ -42,14 +34,14 @@ const ProjectListTable: FC = () => {
         <h3 className='text-2xl'>Список проектов</h3>
       </header>
       {isLoading && <div>... is loading</div>}
-      {projects && projects.length === 0 && !isLoading && (
-        <EmptyTable title='Нет проектов Agile' buttonTitle='Создать проект' />
+      {data && data.length === 0 && (
+        /* !isLoading && */ <EmptyTable title='Нет проектов Agile' buttonTitle='Создать проект' />
       )}
-      {projects && projects.length !== 0 && !isLoading && (
-        <Table
+      {data && data.length !== 0 && (
+        /* !isLoading && */ <Table
           columns={columns}
-          rows={projects.map(({ _id, prefix, name, manager, tasks }) => ({
-            id: _id,
+          rows={data.map(({ id, prefix, name, manager, countTasks }) => ({
+            id,
             items: [
               {
                 id: '0',
@@ -58,7 +50,7 @@ const ProjectListTable: FC = () => {
               {
                 id: '1',
                 value: (
-                  <NavLink to={`/projects/${_id}`} className='hover:text-blue-500'>
+                  <NavLink to={`/projects/${id}`} className='hover:text-blue-500'>
                     {name}
                   </NavLink>
                 ),
@@ -69,7 +61,7 @@ const ProjectListTable: FC = () => {
               },
               {
                 id: '3',
-                value: `${tasks.length}`,
+                value: countTasks,
               },
             ],
           }))}

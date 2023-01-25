@@ -5,9 +5,9 @@ import { useParams } from 'react-router-dom';
 import { useGetAgileTaskListQuery } from '../../services/agileTaskService';
 import IParamsType from '../../types/IParamsType';
 import ITableColumn from '../../types/ITableColumn';
+import Modal from '../../UI/Modal';
+import Table from '../../UI/Table';
 import EmptyTable from '../EmptyTable/EmptyTable';
-import Modal from '../UI/Modal';
-import Table from '../UI/Table';
 
 const columns: ITableColumn[] = [
   {

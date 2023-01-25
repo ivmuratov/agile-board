@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg';
 import INavLinkType from '../../types/INavLinkType';
-import Container from '../UI/Container';
+import Container from '../../UI/Container';
 
 const links: Array<INavLinkType> = [
   {

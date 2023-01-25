@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 import { useGetProjectListQuery } from '../../services/projectService';
 import ITableColumn from '../../types/ITableColumn';
+import Table from '../../UI/Table';
 import EmptyTable from '../EmptyTable/EmptyTable';
-import Table from '../UI/Table';
 
 const columns: ITableColumn[] = [
   {

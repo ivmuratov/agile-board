@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import ITableColumn from '../../types/ITableColumn';
-import ITableRow from '../../types/ITableRow';
+import ITableColumn from '../types/ITableColumn';
+import ITableRow from '../types/ITableRow';
 
 interface IProps {
   columns: ITableColumn[];

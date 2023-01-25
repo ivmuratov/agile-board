@@ -1,7 +1,8 @@
 import { skipToken } from '@reduxjs/toolkit/dist/query';
-import { FC, Fragment, useState } from 'react';
+import { FC, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { useModal } from '../../hooks/useModal';
 import { useGetAgileTaskListQuery } from '../../services/agileTaskService';
 import IParamsType from '../../types/IParamsType';
 import ITableColumn from '../../types/ITableColumn';
@@ -57,15 +58,7 @@ const AgileTaskListTable: FC = () => {
 
   const { data, isLoading } = useGetAgileTaskListQuery(projectId ?? skipToken);
 
-  const [activeModal, setActiveModal] = useState(false);
-
-  const openModal = () => {
-    setActiveModal(true);
-  };
-
-  const closeModal = () => {
-    setActiveModal(false);
-  };
+  const { activeModal, openModal, closeModal } = useModal();
 
   return (
     <Fragment>

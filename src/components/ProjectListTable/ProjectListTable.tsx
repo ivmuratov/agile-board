@@ -1,9 +1,13 @@
 import { FC, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { useModal } from '../../hooks/useModal';
 import { useGetProjectListQuery } from '../../services/projectService';
 import ITableColumn from '../../types/ITableColumn';
+import Button from '../../UI/Button';
+import Modal from '../../UI/Modal';
 import Table from '../../UI/Table';
+import CreateProjectForm from '../CreateProjectForm/CreateProjectForm';
 import EmptyTable from '../EmptyTable/EmptyTable';
 
 const columns: ITableColumn[] = [
@@ -28,14 +32,21 @@ const columns: ITableColumn[] = [
 const ProjectListTable: FC = () => {
   const { data, isLoading } = useGetProjectListQuery();
 
+  const { activeModal, openModal, closeModal } = useModal();
+
   return (
     <Fragment>
-      <header className='mb-5'>
+      <header className='mb-5 flex justify-between'>
         <h3 className='text-2xl'>Список проектов</h3>
+        {data && data.length !== 0 && <Button onClick={openModal}>Создать проект</Button>}
       </header>
       {isLoading && <div>... is loading</div>}
       {data && data.length === 0 && (
-        /* !isLoading && */ <EmptyTable title='Нет проектов Agile' buttonTitle='Создать проект' />
+        /* !isLoading && */ <EmptyTable
+          title='Нет проектов Agile'
+          buttonTitle='Создать проект'
+          buttonAction={openModal}
+        />
       )}
       {data && data.length !== 0 && (
         /* !isLoading && */ <Table
@@ -67,6 +78,9 @@ const ProjectListTable: FC = () => {
           }))}
         />
       )}
+      <Modal active={activeModal} setInactive={closeModal} title='Новый проект'>
+        <CreateProjectForm setInactiveModal={closeModal} />
+      </Modal>
     </Fragment>
   );
 };

@@ -134,7 +134,7 @@ const AgileTaskListTable: FC = () => {
           )}
         />
       )}
-      <Modal active={activeModal} setInactive={closeModal} title='Создать задачу'>
+      <Modal active={activeModal} setInactive={closeModal} title='Новая задача'>
         <div>123</div>
       </Modal>
     </Fragment>

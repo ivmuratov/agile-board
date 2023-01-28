@@ -36,14 +36,14 @@ const Modal: FC<IProps> = ({ active, setInactive, title, children }) => {
         } w-1/2 rounded-md bg-slate-50 transition-transform delay-300`}
         onClick={e => e.stopPropagation()}
       >
-        <header className='flex items-center justify-between border-b p-3'>
-          <h3 className='text-xl'>{title}</h3>
+        <header className='mb-2 flex items-center justify-between border-b py-3 px-6'>
+          <h3 className='text-2xl'>{title}</h3>
           <button
             className='text-4xl opacity-50 after:inline-block after:content-["\00d7"] hover:opacity-90'
             onClick={setInactive}
           />
         </header>
-        <main className='p-3'>{children}</main>
+        <main className='py-3 px-6'>{children}</main>
       </div>
     </div>,
     document.body,

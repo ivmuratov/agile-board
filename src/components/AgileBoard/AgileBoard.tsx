@@ -1,9 +1,9 @@
 import { FC } from 'react';
 
-import ColorType from '../../types/ColorType';
+import IAgileColor from '../../types/IAgileColor';
 import AgileColumn from '../AgileColumn/AgileColumn';
 
-const agileColumns: Array<{ name: string; color: ColorType }> = [
+const agileColumns: Array<{ name: string; color: IAgileColor }> = [
   {
     name: 'Сделать',
     color: 'blue',

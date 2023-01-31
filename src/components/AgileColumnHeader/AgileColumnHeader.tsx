@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import ColorType from '../../types/ColorType';
+import IAgileColor from '../../types/IAgileColor';
 import { getWordTask } from '../../utils/getWordTask';
 
 const colors = {
@@ -13,7 +13,7 @@ const colors = {
 interface IProps {
   title: string;
   countTasks: number;
-  color: ColorType;
+  color: IAgileColor;
 }
 
 const AgileColumnHeader: FC<IProps> = ({ title, countTasks, color }) => {

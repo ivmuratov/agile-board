@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
-import ColorType from '../../types/ColorType';
+import IAgileColor from '../../types/IAgileColor';
 import AgileCard from '../AgileCard/AgileCard';
 import AgileColumnHeader from '../AgileColumnHeader/AgileColumnHeader';
 
 interface IProps {
   name: string;
-  colorHeader: ColorType;
+  colorHeader: IAgileColor;
 }
 
 const AgileColumn: FC<IProps> = ({ name, colorHeader }) => {

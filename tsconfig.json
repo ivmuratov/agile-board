@@ -6,6 +6,8 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "removeComments": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,  
     "lib": [
       "DOM",
       "DOM.Iterable",
@@ -40,8 +42,12 @@
     "noImplicitUseStrict": false, //автоматически добавляет "use strict" если target версия меньше, чем ES6
     "suppressExcessPropertyErrors": false, //объект не мог содержать свойства, которые не были описаны в его структуре
     "suppressImplicitAnyIndexErrors": false, //проверяет, что используя скобочную нотацию невозможно обращаться к свойствам объекта, которые в нём не объявлены ни явно, ни через произвольные параметры.
-    "noStrictGenericChecks": false, //компилятор более "лояльно" при работе с generics
-    "allowSyntheticDefaultImports": true,    
+    "noStrictGenericChecks": false, //компилятор более "лояльно" при работе с generics     
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   },
   "include": [
     "**/*.ts",

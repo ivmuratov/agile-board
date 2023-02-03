@@ -5,12 +5,12 @@
   "license": "ISC",
   "description": "webpack, scrum",
   "scripts": {
-    "start": "webpack serve -c webpack/dev.config.js",
-    "build": "webpack -c webpack/prod.config.js",
-    "analyze": "webpack --analyze -c webpack/analyze.config.js",
-    "start:ts": "webpack serve --env mode=development port=3000",
-    "build:ts": "webpack --env mode=production",
-    "analyze:ts": "webpack --env mode=production analyze=true",
+    "start": "webpack serve --env mode=development port=3000",
+    "build": "webpack --env mode=production",
+    "analyze": "webpack --env mode=production analyze=true",
+    "start:js": "webpack serve -c webpack/dev.config.js",
+    "build:js": "webpack -c webpack/prod.config.js",
+    "analyze:js": "webpack --analyze -c webpack/analyze.config.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },

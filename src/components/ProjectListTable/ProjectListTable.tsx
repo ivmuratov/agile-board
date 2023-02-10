@@ -1,7 +1,7 @@
 import { FC, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { useModal } from '../../services/hooks/useModal';
+import { useModal } from '../../hooks/useModal';
 import { useGetProjectListQuery } from '../../services/projectService';
 import ITableColumn from '../../types/ITableColumn';
 import Button from '../../UI/Button';

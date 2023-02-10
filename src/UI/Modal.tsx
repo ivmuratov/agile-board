@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { FC, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
@@ -39,6 +42,8 @@ const Modal: FC<IProps> = ({ active, setInactive, title, children }) => {
         <header className='mb-2 flex items-center justify-between border-b py-3 px-6'>
           <h3 className='text-2xl'>{title}</h3>
           <button
+            type='button'
+            // eslint-disable-next-line no-octal-escape
             className='text-4xl opacity-50 after:inline-block after:content-["\00d7"] hover:opacity-90'
             onClick={setInactive}
           />

@@ -14,14 +14,13 @@ const ProjectMain: FC = () => {
 
   if (isError) {
     return <NotFound />;
-  } else {
-    return (
-      <Fragment>
-        {projectId && data && <ProjectHeader projectTitle={data.name} projectId={projectId} />}
-        {data && <Outlet />}
-      </Fragment>
-    );
   }
+  return (
+    <Fragment>
+      {projectId && data && <ProjectHeader projectTitle={data.name} projectId={projectId} />}
+      {data && <Outlet />}
+    </Fragment>
+  );
 };
 
 export default ProjectMain;

@@ -11,8 +11,8 @@
     "start:js": "webpack serve -c webpack/dev.config.js",
     "build:js": "webpack -c webpack/prod.config.js",
     "analyze:js": "webpack --analyze -c webpack/analyze.config.js",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint": "eslint \"**/*.{ts,tsx}\"",
+    "lint:fix": "eslint \"**/*.{ts,tsx}\" --fix"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
@@ -44,8 +44,10 @@
     "css-loader": "^6.7.3",
     "css-minimizer-webpack-plugin": "^4.2.2",
     "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",

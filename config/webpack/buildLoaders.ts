@@ -1,11 +1,12 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { RuleSetRule } from 'webpack';
 
 import { BuildOptions } from './types/config';
 
+import type { RuleSetRule } from 'webpack';
+
 export const buildLoaders = ({ isDev }: BuildOptions): RuleSetRule[] => {
-  const assetLoader: RuleSetRule = {
-    test: /\.(jpe?g|png|gif|svg|eot|ttf|woff2?)$/i,
+  const imageLoader: RuleSetRule = {
+    test: /\.(jpe?g|png|gif|svg)$/i,
     type: 'asset/resource',
     generator: isDev ? undefined : { filename: 'static/media/imgs/[name].[contenthash][ext]' },
     use: isDev
@@ -48,5 +49,5 @@ export const buildLoaders = ({ isDev }: BuildOptions): RuleSetRule[] => {
     use: ['babel-loader', 'ts-loader'],
   };
 
-  return [assetLoader, cssLoader, typescriptLoader];
+  return [imageLoader, cssLoader, typescriptLoader];
 };

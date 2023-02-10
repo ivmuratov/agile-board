@@ -20,6 +20,7 @@ const Button: FC<IProps & ButtonHTMLAttributes<HTMLButtonElement>> = ({
   ...props
 }) => (
   <button
+    type='button'
     className={`rounded border py-2 px-5 font-medium text-slate-50 ${themes[variant]}`}
     {...props}
   >

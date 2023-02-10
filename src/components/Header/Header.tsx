@@ -23,28 +23,26 @@ const links: Array<INavLinkType> = [
   },
 ];
 
-const Header: FC = () => {
-  return (
-    <header className='mb-4 h-14 border bg-white'>
-      <Container>
-        <div className='flex h-full items-center justify-between'>
-          <div className='flex items-center space-x-2'>
-            <img src={logo} alt='logo' height='35px' width='35px' />
-            <p className='text-xl font-semibold'>Agile</p>
-          </div>
-          <nav>
-            <ul className='flex space-x-3'>
-              {links.map(({ id, name, path }) => (
-                <li key={id}>
-                  <NavLink to={path}>{name}</NavLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
+const Header: FC = () => (
+  <header className='mb-4 h-14 border bg-white'>
+    <Container>
+      <div className='flex h-full items-center justify-between'>
+        <div className='flex items-center space-x-2'>
+          <img src={logo} alt='logo' height='35px' width='35px' />
+          <p className='text-xl font-semibold'>Agile</p>
         </div>
-      </Container>
-    </header>
-  );
-};
+        <nav>
+          <ul className='flex space-x-3'>
+            {links.map(({ id, name, path }) => (
+              <li key={id}>
+                <NavLink to={path}>{name}</NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </Container>
+  </header>
+);
 
 export default Header;

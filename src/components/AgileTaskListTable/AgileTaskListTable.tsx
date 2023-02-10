@@ -2,8 +2,8 @@ import { skipToken } from '@reduxjs/toolkit/dist/query';
 import { FC, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { useModal } from '../../hooks/useModal';
 import { useGetAgileTaskListQuery } from '../../services/agileTaskService';
+import { useModal } from '../../services/hooks/useModal';
 import IParamsType from '../../types/IParamsType';
 import ITableColumn from '../../types/ITableColumn';
 import Modal from '../../UI/Modal';

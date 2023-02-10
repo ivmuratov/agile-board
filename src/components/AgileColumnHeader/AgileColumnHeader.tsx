@@ -16,17 +16,15 @@ interface IProps {
   color: IAgileColor;
 }
 
-const AgileColumnHeader: FC<IProps> = ({ title, countTasks, color }) => {
-  return (
-    <header
-      className={`mb-6 rounded border border-l-4 border-gray-300/50 ${colors[color]} px-4 py-2`}
-    >
-      <h3 className='text-lg font-medium text-gray-800'>{title}</h3>
-      <p className='text-sm opacity-60'>
-        {countTasks} {getWordTask(countTasks)}
-      </p>
-    </header>
-  );
-};
+const AgileColumnHeader: FC<IProps> = ({ title, countTasks, color }) => (
+  <header
+    className={`mb-6 rounded border border-l-4 border-gray-300/50 ${colors[color]} px-4 py-2`}
+  >
+    <h3 className='text-lg font-medium text-gray-800'>{title}</h3>
+    <p className='text-sm opacity-60'>
+      {countTasks} {getWordTask(countTasks)}
+    </p>
+  </header>
+);
 
 export default AgileColumnHeader;

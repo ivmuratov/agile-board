@@ -1,7 +1,8 @@
 {
   "root": true,
   "env": {
-    "browser": true    
+    "browser": true,
+    "es2021": true    
   },
   //https://stackoverflow.com/questions/61528185/eslint-extends-vs-plugins-v2020
   "plugins": [
@@ -10,17 +11,21 @@
     "react",    
     "react-hooks",
     "prettier",
-    "tailwindcss"
+    "tailwindcss",
+    "jsx-a11y"
   ],
   "extends": [
+    "eslint:recommended",
     "plugin:@typescript-eslint/recommended", 
     "plugin:import/recommended",    
     "plugin:import/typescript",
     "plugin:react/recommended",
-    "plugin:react/jsx-runtime",    
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
     "plugin:tailwindcss/recommended",
+    "plugin:jsx-a11y/recommended",
+    "airbnb",
+    "plugin:react/jsx-runtime",    
     "prettier"    
   ],  
   "parser": "@typescript-eslint/parser",
@@ -36,7 +41,7 @@
     "import/resolver": {
       "node": {
         "extensions": [".ts", ".tsx", ".js"],
-        "moduleDirectory": ["src", "node_modules"]
+        "moduleDirectory": ["src", "node_modules", "config"]
       }
     },
     "react": {
@@ -44,14 +49,28 @@
       "version": "detect"
     }
   },
+  "globals": {
+    "JSX": "readonly",
+    "__dirname": "readonly"
+  },
   "rules": {
     "prettier/prettier": "error",
     "tailwindcss/classnames-order": "error",    
     "@typescript-eslint/no-unused-expressions": "error",
     "react-hooks/rules-of-hooks": "error",
     "no-multiple-empty-lines": "error",
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx", ".tsx"] }],
+    "react/jsx-fragments": ["error", "element"],
     "no-console": "warn",
+    "no-unused-vars": "warn",
+    "react/jsx-props-no-spreading": "warn",
+    "no-shadow": "off",
     "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "import/extensions": "off",
+    "react/function-component-definition": "off",
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": "off",
     "import/order": [
       "error", 
       {

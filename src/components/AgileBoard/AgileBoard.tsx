@@ -22,14 +22,12 @@ const agileColumns: Array<{ name: string; color: IAgileColor }> = [
   },
 ];
 
-const AgileBoard: FC = () => {
-  return (
-    <div className='flex flex-wrap space-x-4'>
-      {agileColumns.map((item, index) => (
-        <AgileColumn key={index} name={item.name} colorHeader={item.color} />
-      ))}
-    </div>
-  );
-};
+const AgileBoard: FC = () => (
+  <div className='flex flex-wrap space-x-4'>
+    {agileColumns.map(item => (
+      <AgileColumn key={item.name} name={item.name} colorHeader={item.color} />
+    ))}
+  </div>
+);
 
 export default AgileBoard;

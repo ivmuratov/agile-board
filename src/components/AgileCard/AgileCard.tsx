@@ -12,21 +12,19 @@ interface IProps {
   priority: PriorityType;
 }
 
-const AgileCard: FC<IProps> = ({ priority }) => {
-  return (
-    <li
-      className={`space-y-7 rounded-lg border-t-4 px-4 py-2 shadow-sm hover:shadow-md ${colors[priority]}`}
-    >
-      <p className='text-sm text-gray-700'>
-        <span className='font-medium'>MR-8 </span>
-        <span>Title</span>
-      </p>
-      <div className='flex justify-between'>
-        <span>i</span>
-        <span>i</span>
-      </div>
-    </li>
-  );
-};
+const AgileCard: FC<IProps> = ({ priority }) => (
+  <li
+    className={`space-y-7 rounded-lg border-t-4 px-4 py-2 shadow-sm hover:shadow-md ${colors[priority]}`}
+  >
+    <p className='text-sm text-gray-700'>
+      <span className='font-medium'>MR-8 </span>
+      <span>Title</span>
+    </p>
+    <div className='flex justify-between'>
+      <span>i</span>
+      <span>i</span>
+    </div>
+  </li>
+);
 
 export default AgileCard;

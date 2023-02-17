@@ -1,31 +1,31 @@
 import { FC } from 'react';
 
-import IAgileColor from '../../types/IAgileColor';
 import AgileColumn from '../AgileColumn/AgileColumn';
+import { AgileColumnHeaderTheme } from '../AgileColumnHeader/AgileColumnHeader';
 
-const agileColumns: Array<{ name: string; color: IAgileColor }> = [
+const agileColumns: Array<{ name: string; theme: AgileColumnHeaderTheme }> = [
   {
     name: 'Сделать',
-    color: 'blue',
+    theme: AgileColumnHeaderTheme.BLUE,
   },
   {
     name: 'В процессе',
-    color: 'yellow',
+    theme: AgileColumnHeaderTheme.YELLOW,
   },
   {
     name: 'На проверке',
-    color: 'purple',
+    theme: AgileColumnHeaderTheme.PURPLE,
   },
   {
     name: 'Принято',
-    color: 'green',
+    theme: AgileColumnHeaderTheme.GREEN,
   },
 ];
 
 const AgileBoard: FC = () => (
   <div className='flex flex-wrap space-x-4'>
     {agileColumns.map(item => (
-      <AgileColumn key={item.name} name={item.name} colorHeader={item.color} />
+      <AgileColumn key={item.name} name={item.name} theme={item.theme} />
     ))}
   </div>
 );

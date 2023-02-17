@@ -1,17 +1,16 @@
 import { FC } from 'react';
 
-import IAgileColor from '../../types/IAgileColor';
 import AgileCard from '../AgileCard/AgileCard';
-import AgileColumnHeader from '../AgileColumnHeader/AgileColumnHeader';
+import AgileColumnHeader, { AgileColumnHeaderTheme } from '../AgileColumnHeader/AgileColumnHeader';
 
-interface IProps {
+interface AgileColumnProps {
   name: string;
-  colorHeader: IAgileColor;
+  theme: AgileColumnHeaderTheme;
 }
 
-const AgileColumn: FC<IProps> = ({ name, colorHeader }) => (
+const AgileColumn: FC<AgileColumnProps> = ({ name, theme }) => (
   <div className='w-72'>
-    <AgileColumnHeader title={name} countTasks={1} color={colorHeader} />
+    <AgileColumnHeader title={name} countTasks={1} theme={theme} />
     <ul className='space-y-3'>
       <AgileCard priority='0' />
       <AgileCard priority='1' />

@@ -3,14 +3,13 @@ import { NavLink } from 'react-router-dom';
 
 import { useModal } from '../../hooks/useModal';
 import { useGetProjectListQuery } from '../../services/projectService';
-import ITableColumn from '../../types/ITableColumn';
 import Button from '../../UI/Button';
 import Modal from '../../UI/Modal';
-import Table from '../../UI/Table';
+import Table, { TableColumn } from '../../UI/Table';
 import CreateProjectForm from '../CreateProjectForm/CreateProjectForm';
 import EmptyTable from '../EmptyTable/EmptyTable';
 
-const columns: ITableColumn[] = [
+const columns: TableColumn[] = [
   {
     id: '0',
     value: 'Префикс',

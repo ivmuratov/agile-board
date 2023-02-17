@@ -4,14 +4,14 @@
 import { FC, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
-interface IProps {
+interface ModalProps {
   active: boolean;
   setInactive: () => void;
   title: string;
   children: JSX.Element;
 }
 
-const Modal: FC<IProps> = ({ active, setInactive, title, children }) => {
+const Modal: FC<ModalProps> = ({ active, setInactive, title, children }) => {
   const handleESC = (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
       setInactive();

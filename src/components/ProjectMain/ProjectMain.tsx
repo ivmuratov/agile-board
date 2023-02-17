@@ -3,12 +3,12 @@ import { FC, Fragment } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 
 import { useGetProjectByIdQuery } from '../../services/projectService';
-import IParamsType from '../../types/IParamsType';
+import ParamsType from '../../types/ParamsType';
 import NotFound from '../NotFound/NotFound';
 import ProjectHeader from '../ProjectHeader/ProjectHeader';
 
 const ProjectMain: FC = () => {
-  const { projectId } = useParams<IParamsType>();
+  const { projectId } = useParams<ParamsType>();
 
   const { data, isError } = useGetProjectByIdQuery(projectId ?? skipToken);
 

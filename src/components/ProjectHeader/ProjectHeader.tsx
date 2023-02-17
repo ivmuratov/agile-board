@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import INavLinkType from '../../types/INavLinkType';
+import NavLinkType from '../../types/NavLinkType';
 
-const links: Array<INavLinkType> = [
+const links: Array<NavLinkType> = [
   {
     id: '0',
     name: 'Проект',
@@ -27,12 +27,12 @@ const links: Array<INavLinkType> = [
   },
 ];
 
-interface IProps {
+interface ProjectHeaderProps {
   projectTitle: string;
   projectId: string;
 }
 
-const ProjectHeader: FC<IProps> = ({ projectTitle, projectId }) => (
+const ProjectHeader: FC<ProjectHeaderProps> = ({ projectTitle, projectId }) => (
   <header className='mb-5'>
     <h3 className='mb-2 text-2xl'>{projectTitle}</h3>
     <nav className='border-b pb-3'>

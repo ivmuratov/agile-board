@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { useParams } from 'react-router-dom';
 
-import IParamsType from '../../types/IParamsType';
+import ParamsType from '../../types/ParamsType';
 
 const ProjectInfo: FC = () => {
-  const { projectId } = useParams<IParamsType>();
+  const { projectId } = useParams<ParamsType>();
   return <h1>Project Info {projectId}</h1>;
 };
 

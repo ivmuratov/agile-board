@@ -1,12 +1,12 @@
 import { forwardRef, InputHTMLAttributes } from 'react';
 
-interface IProps {
+interface InputProps {
   label?: string;
   placeholder?: string;
   textHelper?: string;
 }
 
-const Input = forwardRef<HTMLInputElement, IProps & InputHTMLAttributes<HTMLInputElement>>(
+const Input = forwardRef<HTMLInputElement, InputProps & InputHTMLAttributes<HTMLInputElement>>(
   ({ label, placeholder, textHelper, ...props }, ref) => (
     <div className='flex flex-col'>
       <label className='mb-2 font-medium opacity-80' htmlFor={label}>

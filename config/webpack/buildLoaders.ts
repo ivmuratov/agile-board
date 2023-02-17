@@ -5,8 +5,13 @@ import { BuildOptions } from './types/config';
 import type { RuleSetRule } from 'webpack';
 
 export const buildLoaders = ({ isDev }: BuildOptions): RuleSetRule[] => {
+  const svgLoader: RuleSetRule = {
+    test: /\.svg$/i,
+    use: ['@svgr/webpack'],
+  };
+
   const imageLoader: RuleSetRule = {
-    test: /\.(jpe?g|png|gif|svg)$/i,
+    test: /\.(jpe?g|png|gif)$/i,
     type: 'asset/resource',
     generator: isDev ? undefined : { filename: 'static/media/imgs/[name].[contenthash][ext]' },
     use: isDev
@@ -49,5 +54,5 @@ export const buildLoaders = ({ isDev }: BuildOptions): RuleSetRule[] => {
     use: ['babel-loader', 'ts-loader'],
   };
 
-  return [imageLoader, cssLoader, typescriptLoader];
+  return [imageLoader, svgLoader, cssLoader, typescriptLoader];
 };

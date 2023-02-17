@@ -4,13 +4,12 @@ import { useParams } from 'react-router-dom';
 
 import { useModal } from '../../hooks/useModal';
 import { useGetAgileTaskListQuery } from '../../services/agileTaskService';
-import IParamsType from '../../types/IParamsType';
-import ITableColumn from '../../types/ITableColumn';
+import ParamsType from '../../types/ParamsType';
 import Modal from '../../UI/Modal';
-import Table from '../../UI/Table';
+import Table, { TableColumn } from '../../UI/Table';
 import EmptyTable from '../EmptyTable/EmptyTable';
 
-const columns: ITableColumn[] = [
+const columns: TableColumn[] = [
   {
     id: '0',
     value: 'Название',
@@ -54,7 +53,7 @@ const columns: ITableColumn[] = [
 ];
 
 const AgileTaskListTable: FC = () => {
-  const { projectId } = useParams<IParamsType>();
+  const { projectId } = useParams<ParamsType>();
 
   const { data, isLoading } = useGetAgileTaskListQuery(projectId ?? skipToken);
 

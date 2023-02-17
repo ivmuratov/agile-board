@@ -1,14 +1,26 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
-import ITableColumn from '../types/ITableColumn';
-import ITableRow from '../types/ITableRow';
-
-interface IProps {
-  columns: ITableColumn[];
-  rows: ITableRow[];
+export interface TableColumn {
+  id: string;
+  value: string;
 }
 
-const Table: FC<IProps> = ({ columns, rows }) => (
+export interface TableRowElement {
+  id: string;
+  value: ReactNode | string | number;
+}
+
+export interface TableRow {
+  id: string;
+  items: TableRowElement[];
+}
+
+interface TableProps {
+  columns: TableColumn[];
+  rows: TableRow[];
+}
+
+const Table: FC<TableProps> = ({ columns, rows }) => (
   <table className='min-w-full border p-3'>
     <thead className='h-12 border bg-violet-100/50 text-left'>
       <tr>

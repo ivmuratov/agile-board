@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import logo from '../../assets/logo.svg';
-import INavLinkType from '../../types/INavLinkType';
+import LogoIcon from '../../assets/logo.svg';
+import NavLinkType from '../../types/NavLinkType';
 import Container from '../../UI/Container';
 
-const links: Array<INavLinkType> = [
+const links: Array<NavLinkType> = [
   {
     id: '0',
     name: 'Проекты',
@@ -28,7 +28,8 @@ const Header: FC = () => (
     <Container>
       <div className='flex h-full items-center justify-between'>
         <div className='flex items-center space-x-2'>
-          <img src={logo} alt='logo' height='35px' width='35px' />
+          {/* <img src={LogoIcon} alt='logo' height='35px' width='35px' /> */}
+          <LogoIcon height='35px' width='35px' />
           <p className='text-xl font-semibold'>Agile</p>
         </div>
         <nav>

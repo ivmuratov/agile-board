@@ -2,14 +2,14 @@ import { FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import ICreateProject from '../../models/ICreateProject';
-import Button from '../../UI/Button';
+import Button, { ButtonTheme } from '../../UI/Button';
 import Input from '../../UI/Input';
 
-interface IProps {
+interface CreateProjectFormProps {
   setInactiveModal?: () => void;
 }
 
-const CreateProjectForm: FC<IProps> = ({ setInactiveModal }) => {
+const CreateProjectForm: FC<CreateProjectFormProps> = ({ setInactiveModal }) => {
   const { register, handleSubmit } = useForm<ICreateProject>();
 
   // eslint-disable-next-line no-console
@@ -26,10 +26,10 @@ const CreateProjectForm: FC<IProps> = ({ setInactiveModal }) => {
       <Input label='Описание' {...register('description')} />
       <Input label='Менеджер проекта' {...register('manager')} />
       <div className='flex justify-end space-x-2'>
-        <Button type='submit' variant='success'>
+        <Button type='submit' theme={ButtonTheme.SUCCESS}>
           Сохранить
         </Button>
-        <Button type='reset' variant='secondary' onClick={setInactiveModal}>
+        <Button type='reset' theme={ButtonTheme.SECONDARY} onClick={setInactiveModal}>
           Отменить
         </Button>
       </div>

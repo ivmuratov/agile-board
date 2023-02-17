@@ -1,4 +1,4 @@
-export default interface INavLinkType {
+export default interface NavLinkType {
   id: string;
   name: string;
   path: string;

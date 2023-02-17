@@ -1,4 +1,4 @@
-export const getWordTask = (countTasks: number): string => {
+export const getWordByCountTasks = (countTasks: number): string => {
   switch (countTasks) {
     case 1:
       return 'задача';

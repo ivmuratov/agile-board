@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { getWordTask } from '../../utils/getWordTask';
+import { getWordByCountTasks } from '../../utils/getWordByCountTasks/getWordByCountTasks';
 
 export enum AgileColumnHeaderTheme {
   BLUE = 'blue',
@@ -28,7 +28,7 @@ const AgileColumnHeader: FC<AgileColumnHeaderProps> = ({ title, countTasks, them
   >
     <h3 className='text-lg font-medium text-gray-800'>{title}</h3>
     <p className='text-sm opacity-60'>
-      {countTasks} {getWordTask(countTasks)}
+      {countTasks} {getWordByCountTasks(countTasks)}
     </p>
   </header>
 );

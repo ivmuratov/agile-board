@@ -96,5 +96,15 @@
         "newlines-between": "always"
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.test.{ts,tsx}"
+      ],
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ]
 }

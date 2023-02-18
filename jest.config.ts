@@ -8,7 +8,7 @@ export default {
   clearMocks: true,
 
   // The root directory that Jest should scan for tests and modules within
-  rootDir: '../../',
+  rootDir: './',
 
   // An array of regexp pattern strings used to skip coverage collection
   coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
@@ -17,13 +17,16 @@ export default {
   testEnvironment: 'jsdom',
 
   // The glob patterns Jest uses to detect test files
-  testMatch: ['<rootDir>/src/**/*(*.)@(spec|test).[tj]s?(x)'],
+  testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'],
 
   // An array of directory names to be searched recursively up from the requiring module's location
   moduleDirectories: ['src', 'node_modules'],
 
   // An array of file extensions your modules use
   moduleFileExtensions: ['js', 'ts', 'tsx', 'json', 'node'],
+
+  // A list of paths to modules that run some code to configure or set up the testing framework before each test
+  setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
 
   // All imported modules in your tests should be mocked automatically
   // automock: false,
@@ -126,9 +129,6 @@ export default {
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
   // setupFiles: [],
-
-  // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: [],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,

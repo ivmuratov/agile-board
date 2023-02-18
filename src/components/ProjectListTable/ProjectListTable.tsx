@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 
 import { useModal } from '../../hooks/useModal';
 import { useGetProjectListQuery } from '../../services/projectService';
-import Button from '../../UI/Button';
-import Modal from '../../UI/Modal';
-import Table, { TableColumn } from '../../UI/Table';
+import Button from '../../UI/Button/Button';
+import Modal from '../../UI/Modal/Modal';
+import Table, { TableColumn } from '../../UI/Table/Table';
 import CreateProjectForm from '../CreateProjectForm/CreateProjectForm';
 import EmptyTable from '../EmptyTable/EmptyTable';
 

@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { FC, useEffect } from 'react';
+import { FC, ReactNode, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 interface ModalProps {
   active: boolean;
   setInactive: () => void;
   title: string;
-  children: JSX.Element;
+  children: ReactNode;
 }
 
 const Modal: FC<ModalProps> = ({ active, setInactive, title, children }) => {

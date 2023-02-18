@@ -1,5 +1,4 @@
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-
+import { buildCssLoader } from './loaders/buildCssLoader';
 import { BuildOptions } from './types/config';
 
 import type { RuleSetRule } from 'webpack';
@@ -43,10 +42,7 @@ export const buildLoaders = ({ isDev }: BuildOptions): RuleSetRule[] => {
         ],
   };
 
-  const cssLoader: RuleSetRule = {
-    test: /\.css$/i,
-    use: [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
-  };
+  const cssLoader = buildCssLoader(isDev);
 
   const typescriptLoader: RuleSetRule = {
     test: /\.tsx?$/i,

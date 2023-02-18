@@ -16,7 +16,7 @@ const themes: Record<ButtonTheme, string> = {
 
 interface ButtonProps {
   theme?: ButtonTheme;
-  children: ReactNode | string;
+  children: ReactNode;
 }
 
 const Button: FC<ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> = ({

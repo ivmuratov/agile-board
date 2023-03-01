@@ -1,0 +1,87 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "my project",
+      "prefix": "001",
+      "description": "description about by my project",
+      "manager": "I. Muratov"
+    },
+    {
+      "id": 2,
+      "name": "project 2",
+      "prefix": "002",
+      "description": "description about by project 2",
+      "manager": "O. Sokolov"
+    },
+    {
+      "id": 3,
+      "name": "project 3",
+      "prefix": "003",
+      "description": "description about by project 3",
+      "manager": "V. Smirnov"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "name": "task 1",
+      "description": "task 1",
+      "category": "category",
+      "author": "I. Muratov",
+      "executor": "I. Muratov",
+      "createdDate": "2020-01-01",
+      "updatedDate": "",
+      "finishedDate": "",
+      "status": "To do",
+      "type": "Task",
+      "priority": "0",
+      "projectId": 1
+    },
+    {
+      "id": 2,
+      "name": "task 2",
+      "description": "task 2",
+      "category": "category",
+      "author": "I. Muratov",
+      "executor": "I. Muratov",
+      "createdDate": "2020-01-01",
+      "updatedDate": "",
+      "finishedDate": "",
+      "status": "To do",
+      "type": "Task",
+      "priority": "0",
+      "projectId": 1
+    },
+    {
+      "id": 3,
+      "name": "task 3",
+      "description": "task 3",
+      "category": "category",
+      "author": "I. Muratov",
+      "executor": "I. Muratov",
+      "createdDate": "2020-01-01",
+      "updatedDate": "",
+      "finishedDate": "",
+      "status": "To do",
+      "type": "Task",
+      "priority": "0",
+      "projectId": 2
+    },
+    {
+      "id": 4,
+      "name": "task 4",
+      "description": "task 4",
+      "category": "category",
+      "author": "I. Muratov",
+      "executor": "I. Muratov",
+      "createdDate": "2020-01-01",
+      "updatedDate": "",
+      "finishedDate": "",
+      "status": "To do",
+      "type": "Task",
+      "priority": "0",
+      "projectId": 3
+    }
+  ]
+}

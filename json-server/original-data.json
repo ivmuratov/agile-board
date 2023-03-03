@@ -30,12 +30,12 @@
       "category": "category",
       "author": "I. Muratov",
       "executor": "I. Muratov",
-      "createdDate": "2020-01-01",
-      "updatedDate": "",
-      "finishedDate": "",
       "status": "To do",
       "type": "Task",
       "priority": "0",
+      "createdDate": "01.01.2023, 00:00:00",
+      "updatedDate": "",
+      "finishedDate": "",
       "projectId": 1
     },
     {
@@ -45,12 +45,12 @@
       "category": "category",
       "author": "I. Muratov",
       "executor": "I. Muratov",
-      "createdDate": "2020-01-01",
-      "updatedDate": "",
-      "finishedDate": "",
       "status": "To do",
       "type": "Task",
       "priority": "0",
+      "createdDate": "01.01.2023, 00:00:00",
+      "updatedDate": "",
+      "finishedDate": "",
       "projectId": 1
     },
     {
@@ -60,28 +60,13 @@
       "category": "category",
       "author": "I. Muratov",
       "executor": "I. Muratov",
-      "createdDate": "2020-01-01",
-      "updatedDate": "",
-      "finishedDate": "",
       "status": "To do",
       "type": "Task",
       "priority": "0",
+      "createdDate": "01.01.2023, 00:00:00",
+      "updatedDate": "",
+      "finishedDate": "",
       "projectId": 2
-    },
-    {
-      "id": 4,
-      "name": "task 4",
-      "description": "task 4",
-      "category": "category",
-      "author": "I. Muratov",
-      "executor": "I. Muratov",
-      "createdDate": "2020-01-01",
-      "updatedDate": "",
-      "finishedDate": "",
-      "status": "To do",
-      "type": "Task",
-      "priority": "0",
-      "projectId": 3
-    }
+    }    
   ]
 }

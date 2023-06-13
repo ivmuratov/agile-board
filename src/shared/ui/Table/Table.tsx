@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, memo } from 'react';
 
 export interface TableColumn {
   id: string;
@@ -7,7 +7,7 @@ export interface TableColumn {
 
 export interface TableRowElement {
   id: string;
-  value: ReactNode | string | number;
+  value: ReactNode;
 }
 
 export interface TableRow {
@@ -20,7 +20,7 @@ interface TableProps {
   rows: TableRow[];
 }
 
-const Table: FC<TableProps> = ({ columns, rows }) => (
+export const Table: FC<TableProps> = memo(({ columns, rows }) => (
   <table className='min-w-full border p-3'>
     <thead className='h-12 border bg-violet-100/50 text-left'>
       <tr>
@@ -43,6 +43,4 @@ const Table: FC<TableProps> = ({ columns, rows }) => (
       ))}
     </tbody>
   </table>
-);
-
-export default Table;
+));

@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Button, { ButtonTheme } from './Button';
+import { Button } from './Button';
 
 export default {
   title: 'UI/Button',
@@ -14,24 +14,24 @@ const Template: ComponentStory<typeof Button> = args => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  theme: ButtonTheme.PRIMARY,
+  theme: 'primary',
   children: 'Primary',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  theme: ButtonTheme.SECONDARY,
+  theme: 'secondary',
   children: 'Secondary',
 };
 
 export const Success = Template.bind({});
 Success.args = {
-  theme: ButtonTheme.SUCCESS,
+  theme: 'success',
   children: 'Success',
 };
 
 export const Danger = Template.bind({});
 Danger.args = {
-  theme: ButtonTheme.DANGER,
+  theme: 'danger',
   children: 'Danger',
 };

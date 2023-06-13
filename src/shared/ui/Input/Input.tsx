@@ -1,14 +1,15 @@
 import { forwardRef, InputHTMLAttributes } from 'react';
 
-interface InputProps {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  className?: string;
   label?: string;
   placeholder?: string;
   textHelper?: string;
 }
 
-const Input = forwardRef<HTMLInputElement, InputProps & InputHTMLAttributes<HTMLInputElement>>(
-  ({ label, placeholder, textHelper, ...props }, ref) => (
-    <div className='flex flex-col'>
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ className, label, placeholder, textHelper, ...props }, ref) => (
+    <div className={`flex flex-col ${className}`}>
       <label className='mb-2 font-medium opacity-80' htmlFor={label}>
         {label}
       </label>
@@ -25,5 +26,3 @@ const Input = forwardRef<HTMLInputElement, InputProps & InputHTMLAttributes<HTML
 );
 
 Input.displayName = 'Input';
-
-export default Input;

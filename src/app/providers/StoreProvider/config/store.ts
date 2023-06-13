@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { agileTaskAPI } from '../services/agileTaskService';
-import { projectAPI } from '../services/projectService';
+import { agileTaskAPI } from '../../../../services/agileTaskService';
+import { projectAPI } from '../../../../services/projectService';
 
 const rootReducer = combineReducers({
   [projectAPI.reducerPath]: projectAPI.reducer,

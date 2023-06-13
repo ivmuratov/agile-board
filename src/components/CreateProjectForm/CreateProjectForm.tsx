@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import ICreateProject from '../../models/ICreateProject';
-import Button, { ButtonTheme } from '../../shared/ui/Button/Button';
-import Input from '../../shared/ui/Input/Input';
+import { Button } from '../../shared/ui/Button';
+import { Input } from '../../shared/ui/Input';
 
 interface CreateProjectFormProps {
   setInactiveModal?: () => void;
@@ -26,10 +26,10 @@ const CreateProjectForm: FC<CreateProjectFormProps> = ({ setInactiveModal }) => 
       <Input label='Описание' {...register('description')} />
       <Input label='Менеджер проекта' {...register('manager')} />
       <div className='flex justify-end space-x-2'>
-        <Button type='submit' theme={ButtonTheme.SUCCESS}>
+        <Button type='submit' theme='success'>
           Сохранить
         </Button>
-        <Button type='reset' theme={ButtonTheme.SECONDARY} onClick={setInactiveModal}>
+        <Button type='reset' theme='secondary' onClick={setInactiveModal}>
           Отменить
         </Button>
       </div>

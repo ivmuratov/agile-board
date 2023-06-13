@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 
 import { useGetAgileTaskListQuery } from '../../services/agileTaskService';
 import { useModal } from '../../shared/lib/hooks/useModal/useModal';
-import Modal from '../../shared/ui/Modal/Modal';
-import Table, { TableColumn } from '../../shared/ui/Table/Table';
+import { Modal } from '../../shared/ui/Modal';
+import { Table, TableColumn } from '../../shared/ui/Table';
 import ParamsType from '../../types/ParamsType';
 import EmptyTable from '../EmptyTable/EmptyTable';
 

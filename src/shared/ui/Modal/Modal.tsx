@@ -2,7 +2,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { FC, ReactNode, useEffect } from 'react';
-import { createPortal } from 'react-dom';
+
+import { Portal } from '../Portal';
 
 interface ModalProps {
   active: boolean;
@@ -11,7 +12,7 @@ interface ModalProps {
   children: ReactNode;
 }
 
-const Modal: FC<ModalProps> = ({ active, setInactive, title, children }) => {
+export const Modal: FC<ModalProps> = ({ active, setInactive, title, children }) => {
   const handleESC = (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
       setInactive();
@@ -26,33 +27,32 @@ const Modal: FC<ModalProps> = ({ active, setInactive, title, children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return createPortal(
-    <div
-      className={`${
-        active ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
-      } fixed top-0 left-0 flex h-screen w-screen items-center justify-center bg-slate-900/50 transition-opacity delay-300`}
-      onClick={setInactive}
-    >
+  return (
+    <Portal element={document.getElementById('root') ?? document.body}>
       <div
         className={`${
-          active ? 'scale-100' : 'scale-50'
-        } w-1/2 rounded-md bg-slate-50 transition-transform delay-300`}
-        onClick={e => e.stopPropagation()}
+          active ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+        } fixed top-0 left-0 flex h-screen w-screen items-center justify-center bg-slate-900/50 transition-opacity delay-300`}
+        onClick={setInactive}
       >
-        <header className='mb-2 flex items-center justify-between border-b py-3 px-6'>
-          <h3 className='text-2xl'>{title}</h3>
-          <button
-            type='button'
-            // eslint-disable-next-line no-octal-escape
-            className='text-4xl opacity-50 after:inline-block after:content-["\00d7"] hover:opacity-90'
-            onClick={setInactive}
-          />
-        </header>
-        <main className='py-3 px-6'>{children}</main>
+        <div
+          className={`${
+            active ? 'scale-100' : 'scale-50'
+          } w-1/2 rounded-md bg-slate-50 transition-transform delay-300`}
+          onClick={e => e.stopPropagation()}
+        >
+          <header className='mb-2 flex items-center justify-between border-b py-3 px-6'>
+            <h3 className='text-2xl'>{title}</h3>
+            <button
+              type='button'
+              // eslint-disable-next-line no-octal-escape
+              className='text-4xl opacity-50 after:inline-block after:content-["\00d7"] hover:opacity-90'
+              onClick={setInactive}
+            />
+          </header>
+          <main className='py-3 px-6'>{children}</main>
+        </div>
       </div>
-    </div>,
-    document.body,
+    </Portal>
   );
 };
-
-export default Modal;

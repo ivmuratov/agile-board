@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import LogoIcon from '../../assets/logo.svg';
+import LogoIcon from '../../shared/assets/logo.svg';
+import Container from '../../shared/ui/Container/Container';
 import NavLinkType from '../../types/NavLinkType';
-import Container from '../../UI/Container';
 
 const links: Array<NavLinkType> = [
   {

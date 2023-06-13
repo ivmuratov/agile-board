@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import Button from '../../UI/Button/Button';
+import Button from '../../shared/ui/Button/Button';
 
 interface EmptyTableProps {
   title: string;

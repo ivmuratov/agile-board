@@ -1,7 +1,7 @@
 import { FC, lazy, Suspense } from 'react';
 import { useRoutes } from 'react-router-dom';
 
-import Container from '../../UI/Container';
+import Container from '../../shared/ui/Container/Container';
 
 const ProjectListTable = lazy(() => import('../ProjectListTable/ProjectListTable'));
 const ProjectMain = lazy(() => import('../ProjectMain/ProjectMain'));

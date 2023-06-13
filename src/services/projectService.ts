@@ -5,7 +5,7 @@ import IProject from '../models/IProject';
 export const projectAPI = createApi({
   reducerPath: 'projectAPI',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:8080/api/',
+    baseUrl: 'http://localhost:8080/',
   }),
   tagTypes: ['project'],
   endpoints: build => ({

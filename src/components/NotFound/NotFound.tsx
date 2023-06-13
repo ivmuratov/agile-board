@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import Button from '../../UI/Button/Button';
+import Button from '../../shared/ui/Button/Button';
 
 const NotFound: FC = () => {
   const navigate = useNavigate();

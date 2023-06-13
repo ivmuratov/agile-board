@@ -5,7 +5,7 @@ import IAgileTask from '../models/IAgileTask';
 export const agileTaskAPI = createApi({
   reducerPath: ' agileTaskAPI',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:8080/api/projects/',
+    baseUrl: 'http://localhost:8080/projects/',
   }),
   tagTypes: ['agileTask'],
   endpoints: build => ({

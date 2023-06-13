@@ -6,16 +6,16 @@ import { FC, ReactNode, useEffect } from 'react';
 import { Portal } from '../Portal';
 
 interface ModalProps {
-  active: boolean;
-  setInactive: () => void;
-  title: string;
   children: ReactNode;
+  isOpen: boolean;
+  title?: string;
+  onClose: () => void;
 }
 
-export const Modal: FC<ModalProps> = ({ active, setInactive, title, children }) => {
+export const Modal: FC<ModalProps> = ({ children, isOpen, title, onClose }) => {
   const handleESC = (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
-      setInactive();
+      onClose();
     }
   };
 
@@ -31,13 +31,13 @@ export const Modal: FC<ModalProps> = ({ active, setInactive, title, children }) 
     <Portal element={document.getElementById('root') ?? document.body}>
       <div
         className={`${
-          active ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+          isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         } fixed top-0 left-0 flex h-screen w-screen items-center justify-center bg-slate-900/50 transition-opacity delay-300`}
-        onClick={setInactive}
+        onClick={onClose}
       >
         <div
           className={`${
-            active ? 'scale-100' : 'scale-50'
+            isOpen ? 'scale-100' : 'scale-50'
           } w-1/2 rounded-md bg-slate-50 transition-transform delay-300`}
           onClick={e => e.stopPropagation()}
         >
@@ -47,7 +47,7 @@ export const Modal: FC<ModalProps> = ({ active, setInactive, title, children }) 
               type='button'
               // eslint-disable-next-line no-octal-escape
               className='text-4xl opacity-50 after:inline-block after:content-["\00d7"] hover:opacity-90'
-              onClick={setInactive}
+              onClick={onClose}
             />
           </header>
           <main className='py-3 px-6'>{children}</main>

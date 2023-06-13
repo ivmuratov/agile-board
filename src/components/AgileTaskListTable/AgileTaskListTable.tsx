@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 
 import { useGetAgileTaskListQuery } from '../../services/agileTaskService';
 import { useModal } from '../../shared/lib/hooks/useModal/useModal';
+import ParamsType from '../../shared/types/ParamsType';
 import { Modal } from '../../shared/ui/Modal';
 import { Table, TableColumn } from '../../shared/ui/Table';
-import ParamsType from '../../types/ParamsType';
 import EmptyTable from '../EmptyTable/EmptyTable';
 
 const columns: TableColumn[] = [
@@ -57,7 +57,7 @@ const AgileTaskListTable: FC = () => {
 
   const { data, isLoading } = useGetAgileTaskListQuery(projectId ?? skipToken);
 
-  const { activeModal, openModal, closeModal } = useModal();
+  const { isOpenModal, openModalHandler, closeModalHandler } = useModal();
 
   return (
     <Fragment>
@@ -66,7 +66,7 @@ const AgileTaskListTable: FC = () => {
         <EmptyTable
           title='Нет задач в проекте'
           buttonTitle='Создать задачу'
-          buttonAction={openModal}
+          buttonAction={openModalHandler}
         />
       )}
       {data && data.length !== 0 && !isLoading && (
@@ -133,7 +133,7 @@ const AgileTaskListTable: FC = () => {
           )}
         />
       )}
-      <Modal active={activeModal} setInactive={closeModal} title='Новая задача'>
+      <Modal isOpen={isOpenModal} onClose={closeModalHandler} title='Новая задача'>
         <div>123</div>
       </Modal>
     </Fragment>

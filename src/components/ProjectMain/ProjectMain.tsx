@@ -3,7 +3,7 @@ import { FC, Fragment } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 
 import { useGetProjectByIdQuery } from '../../services/projectService';
-import ParamsType from '../../types/ParamsType';
+import ParamsType from '../../shared/types/ParamsType';
 import NotFound from '../NotFound/NotFound';
 import ProjectHeader from '../ProjectHeader/ProjectHeader';
 

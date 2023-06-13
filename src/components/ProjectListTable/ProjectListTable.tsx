@@ -31,20 +31,20 @@ const columns: TableColumn[] = [
 const ProjectListTable: FC = () => {
   const { data, isLoading } = useGetProjectListQuery();
 
-  const { activeModal, openModal, closeModal } = useModal();
+  const { isOpenModal, openModalHandler, closeModalHandler } = useModal();
 
   return (
     <Fragment>
       <header className='mb-5 flex justify-between'>
         <h3 className='text-2xl'>Список проектов</h3>
-        {data && data.length !== 0 && <Button onClick={openModal}>Создать проект</Button>}
+        {data && data.length !== 0 && <Button onClick={openModalHandler}>Создать проект</Button>}
       </header>
       {isLoading && <div>... is loading</div>}
       {data && data.length === 0 && (
         /* !isLoading && */ <EmptyTable
           title='Нет проектов Agile'
           buttonTitle='Создать проект'
-          buttonAction={openModal}
+          buttonAction={openModalHandler}
         />
       )}
       {data && data.length !== 0 && (
@@ -77,8 +77,8 @@ const ProjectListTable: FC = () => {
           }))}
         />
       )}
-      <Modal active={activeModal} setInactive={closeModal} title='Новый проект'>
-        <CreateProjectForm setInactiveModal={closeModal} />
+      <Modal isOpen={isOpenModal} onClose={closeModalHandler} title='Новый проект'>
+        <CreateProjectForm setInactiveModal={closeModalHandler} />
       </Modal>
     </Fragment>
   );

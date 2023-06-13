@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import NavLinkType from '../../types/NavLinkType';
+import NavLinkType from '../../shared/types/NavLinkType';
 
 const links: Array<NavLinkType> = [
   {

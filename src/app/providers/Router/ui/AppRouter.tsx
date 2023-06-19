@@ -9,10 +9,8 @@ export const AppRouter: FC = () => {
   const routes = useRoutes(Object.values(appRouter));
 
   return (
-    <main>
-      <Container>
-        <Suspense fallback={<div>... loading</div>}>{routes}</Suspense>
-      </Container>
-    </main>
+    <Container>
+      <Suspense fallback={<div>... loading</div>}>{routes}</Suspense>
+    </Container>
   );
 };

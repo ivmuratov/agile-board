@@ -1,10 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
+import { projectApi } from '@/pages/ProjectListPage/api/projectListApi';
 import { agileTaskAPI } from '@/services/agileTaskService';
-import { projectAPI } from '@/services/projectService';
+import { rtkApi } from '@/shared/api/rtkApi';
 
 const rootReducer = combineReducers({
-  [projectAPI.reducerPath]: projectAPI.reducer,
+  [rtkApi.reducerPath]: rtkApi.reducer,
   [agileTaskAPI.reducerPath]: agileTaskAPI.reducer,
 });
 
@@ -12,7 +13,7 @@ export const createStore = () =>
   configureStore({
     reducer: rootReducer,
     middleware: getDefaultMiddleware =>
-      getDefaultMiddleware().concat([projectAPI.middleware, agileTaskAPI.middleware]),
+      getDefaultMiddleware().concat([projectApi.middleware, agileTaskAPI.middleware]),
   });
 
 export type RootState = ReturnType<typeof rootReducer>;

@@ -23,12 +23,11 @@ const links: Array<NavLinkType> = [
   },
 ];
 
-const Header: FC = () => (
+export const Navbar: FC = () => (
   <header className='mb-4 h-14 border bg-white'>
     <Container>
       <div className='flex h-full items-center justify-between'>
         <div className='flex items-center space-x-2'>
-          {/* <img src={LogoIcon} alt='logo' height='35px' width='35px' /> */}
           <LogoIcon height='35px' width='35px' />
           <p className='text-xl font-semibold'>Agile</p>
         </div>
@@ -45,5 +44,3 @@ const Header: FC = () => (
     </Container>
   </header>
 );
-
-export default Header;

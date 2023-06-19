@@ -5,7 +5,7 @@ import { Outlet, useParams } from 'react-router-dom';
 import NotFound from '../NotFound/NotFound';
 import ProjectHeader from '../ProjectHeader/ProjectHeader';
 
-import { useGetProjectByIdQuery } from '@/services/projectService';
+import { useGetProjectByIdQuery } from '@/pages/ProjectListPage/api/projectListApi';
 import ParamsType from '@/shared/types/ParamsType';
 
 const ProjectMain: FC = () => {

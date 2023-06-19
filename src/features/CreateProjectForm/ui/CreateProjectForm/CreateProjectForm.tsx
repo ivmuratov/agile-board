@@ -1,19 +1,20 @@
-import { FC } from 'react';
+import { memo, FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import ICreateProject from '@/models/ICreateProject';
+import { CreateProjectFormSchema } from '../../model/types/createProjectForm';
+
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 
-interface CreateProjectFormProps {
-  setInactiveModal?: () => void;
+export interface CreateProjectFormProps {
+  onCancelHandler?: () => void;
 }
 
-const CreateProjectForm: FC<CreateProjectFormProps> = ({ setInactiveModal }) => {
-  const { register, handleSubmit } = useForm<ICreateProject>();
+const CreateProjectForm: FC<CreateProjectFormProps> = memo(({ onCancelHandler }) => {
+  const { register, handleSubmit } = useForm<CreateProjectFormSchema>();
 
   // eslint-disable-next-line no-console
-  const onSubmit: SubmitHandler<ICreateProject> = data => console.log(data);
+  const onSubmit: SubmitHandler<CreateProjectFormSchema> = data => console.log(data);
 
   return (
     <form className='mb-3 space-y-5' onSubmit={handleSubmit(onSubmit)}>
@@ -29,12 +30,12 @@ const CreateProjectForm: FC<CreateProjectFormProps> = ({ setInactiveModal }) => 
         <Button type='submit' theme='success'>
           Сохранить
         </Button>
-        <Button type='reset' theme='secondary' onClick={setInactiveModal}>
+        <Button type='reset' theme='secondary' onClick={onCancelHandler}>
           Отменить
         </Button>
       </div>
     </form>
   );
-};
+});
 
 export default CreateProjectForm;

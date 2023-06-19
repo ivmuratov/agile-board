@@ -1,8 +1,6 @@
-export default interface IProject {
-  id: string;
+export interface CreateProjectFormSchema {
   name: string;
   prefix: string;
   description: string;
   manager: string;
-  countTasks: number;
 }

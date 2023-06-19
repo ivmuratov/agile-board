@@ -1,13 +1,13 @@
 import { RouteObject } from 'react-router-dom';
 
-import AgileBoard from '../../../../components/AgileBoard/AgileBoard';
-import AgileTaskListTable from '../../../../components/AgileTaskListTable/AgileTaskListTable';
-import { MainPage } from '../../../../components/MainPage';
-import NotFound from '../../../../components/NotFound/NotFound';
-import ProjectInfo from '../../../../components/ProjectInfo/ProjectInfo';
-import ProjectListTable from '../../../../components/ProjectListTable/ProjectListTable';
-import ProjectMain from '../../../../components/ProjectMain/ProjectMain';
-import TeamInfo from '../../../../components/TeamInfo/TeamInfo';
+import AgileBoard from '@/components/AgileBoard/AgileBoard';
+import AgileTaskListTable from '@/components/AgileTaskListTable/AgileTaskListTable';
+import { MainPage } from '@/components/MainPage';
+import NotFound from '@/components/NotFound/NotFound';
+import ProjectInfo from '@/components/ProjectInfo/ProjectInfo';
+import ProjectListTable from '@/components/ProjectListTable/ProjectListTable';
+import ProjectMain from '@/components/ProjectMain/ProjectMain';
+import TeamInfo from '@/components/TeamInfo/TeamInfo';
 import {
   AppRoutes,
   ProjectRoutes,
@@ -18,7 +18,7 @@ import {
   getProjectRouteTeam,
   getProjectRouteTasks,
   getAppRouteProject,
-} from '../../../../shared/routes/routes';
+} from '@/shared/routes/routes';
 
 const projectRoutes: Record<ProjectRoutes, RouteObject> = {
   [ProjectRoutes.INFO]: {

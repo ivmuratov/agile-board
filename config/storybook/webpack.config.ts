@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import path from 'path';
 
 import { BuildPaths } from '../webpack/types/config';
@@ -12,8 +13,12 @@ export default ({ config }: { config: Configuration }) => {
     public: '',
     src: path.resolve(__dirname, '..', '..', 'src'),
   };
-
   config.resolve!.modules!.push(paths.src);
   config.resolve!.extensions!.push('.ts', '.tsx');
+  config!.resolve!.alias = {
+    ...config!.resolve!.alias,
+    '@': paths.src,
+  };
+
   return config;
 };

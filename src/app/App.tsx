@@ -1,7 +1,8 @@
 import { FC } from 'react';
 
-import Header from '../components/Header/Header';
 import { AppRouter } from './providers/Router';
+
+import Header from '@/components/Header/Header';
 import './styles/index.css';
 
 const App: FC = () => (

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useParams } from 'react-router-dom';
 
-import ParamsType from '../../shared/types/ParamsType';
+import ParamsType from '@/shared/types/ParamsType';
 
 const ProjectInfo: FC = () => {
   const { projectId } = useParams<ParamsType>();

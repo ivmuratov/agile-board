@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import ICreateProject from '../../models/ICreateProject';
-import { Button } from '../../shared/ui/Button';
-import { Input } from '../../shared/ui/Input';
+import ICreateProject from '@/models/ICreateProject';
+import { Button } from '@/shared/ui/Button';
+import { Input } from '@/shared/ui/Input';
 
 interface CreateProjectFormProps {
   setInactiveModal?: () => void;

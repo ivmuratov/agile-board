@@ -1,8 +1,9 @@
 import { FC, Suspense } from 'react';
 import { useRoutes } from 'react-router-dom';
 
-import { Container } from '../../../../shared/ui/Container';
 import { appRouter } from '../config/router';
+
+import { Container } from '@/shared/ui/Container';
 
 export const AppRouter: FC = () => {
   const routes = useRoutes(Object.values(appRouter));

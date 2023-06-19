@@ -1,13 +1,14 @@
 import { FC, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { useGetProjectListQuery } from '../../services/projectService';
-import { useModal } from '../../shared/lib/hooks/useModal/useModal';
-import { Button } from '../../shared/ui/Button';
-import { Modal } from '../../shared/ui/Modal';
-import { Table, TableColumn } from '../../shared/ui/Table';
 import CreateProjectForm from '../CreateProjectForm/CreateProjectForm';
 import EmptyTable from '../EmptyTable/EmptyTable';
+
+import { useGetProjectListQuery } from '@/services/projectService';
+import { useModal } from '@/shared/lib/hooks/useModal/useModal';
+import { Button } from '@/shared/ui/Button';
+import { Modal } from '@/shared/ui/Modal';
+import { Table, TableColumn } from '@/shared/ui/Table';
 
 const columns: TableColumn[] = [
   {

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { getWordByCountTasks } from '../../shared/lib/helpers/getWordByCountTasks/getWordByCountTasks';
+import { getWordByCountTasks } from '@/shared/lib/helpers/getWordByCountTasks/getWordByCountTasks';
 
 export enum AgileColumnHeaderTheme {
   BLUE = 'blue',

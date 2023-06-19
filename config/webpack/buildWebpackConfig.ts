@@ -17,6 +17,7 @@ export const buildWebpackConfig = (options: BuildOptions): Configuration => {
     },
     output: {
       path: paths.build,
+      publicPath: '/',
       filename: 'static/js/[name].[contenthash].bundle.js',
       assetModuleFilename: 'static/media/[name][ext]',
       chunkFilename: 'static/js/[id].bundle.js',

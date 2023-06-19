@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Button } from '@/shared/ui/Button';
 
-const NotFound: FC = () => {
+const NotFoundPage: FC = () => {
   const navigate = useNavigate();
 
   const returnBack = () => {
@@ -19,4 +19,4 @@ const NotFound: FC = () => {
   );
 };
 
-export default NotFound;
+export default NotFoundPage;

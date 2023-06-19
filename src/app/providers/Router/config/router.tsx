@@ -2,11 +2,11 @@ import { RouteObject } from 'react-router-dom';
 
 import AgileBoard from '@/components/AgileBoard/AgileBoard';
 import AgileTaskListTable from '@/components/AgileTaskListTable/AgileTaskListTable';
-import NotFound from '@/components/NotFound/NotFound';
 import ProjectInfo from '@/components/ProjectInfo/ProjectInfo';
 import ProjectMain from '@/components/ProjectMain/ProjectMain';
 import TeamInfo from '@/components/TeamInfo/TeamInfo';
 import { MainPage } from '@/pages/MainPage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProjectListPage } from '@/pages/ProjectListPage';
 import {
   AppRoutes,
@@ -55,6 +55,6 @@ export const appRouter: Record<AppRoutes, RouteObject> = {
   },
   [AppRoutes.NOT_FOUND]: {
     path: getRouteNotFound(),
-    element: <NotFound />,
+    element: <NotFoundPage />,
   },
 };

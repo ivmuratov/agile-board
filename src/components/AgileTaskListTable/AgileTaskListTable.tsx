@@ -2,13 +2,12 @@ import { skipToken } from '@reduxjs/toolkit/dist/query';
 import { FC, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 
-import EmptyTable from '../EmptyTable/EmptyTable';
-
 import { useGetAgileTaskListQuery } from '@/services/agileTaskService';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import ParamsType from '@/shared/types/ParamsType';
 import { Modal } from '@/shared/ui/Modal';
 import { Table, TableColumn } from '@/shared/ui/Table';
+import { EmptyTable } from '@/widgets/EmptyTable';
 
 const columns: TableColumn[] = [
   {

@@ -1,9 +1,9 @@
 import { memo, FC, useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import EmptyTable from '@/components/EmptyTable/EmptyTable';
 import { Project } from '@/entities/Project';
 import { Table, TableColumn, TableRow } from '@/shared/ui/Table';
+import { EmptyTable } from '@/widgets/EmptyTable';
 
 const columns: TableColumn[] = [
   {

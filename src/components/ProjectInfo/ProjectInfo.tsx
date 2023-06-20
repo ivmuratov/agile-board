@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { useParams } from 'react-router-dom';
 
-import ParamsType from '@/shared/types/ParamsType';
+import type { AppParams } from '@/shared/types/route';
 
 const ProjectInfo: FC = () => {
-  const { projectId } = useParams<ParamsType>();
+  const { projectId } = useParams<AppParams>();
   return <h1>Project Info {projectId}</h1>;
 };
 

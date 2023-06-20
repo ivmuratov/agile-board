@@ -2,24 +2,21 @@ import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import LogoIcon from '@/shared/assets/logo.svg';
-import NavLinkType from '@/shared/types/NavLinkType';
+import { AppNavLink } from '@/shared/types/route';
 import { Container } from '@/shared/ui/Container';
 
-const links: Array<NavLinkType> = [
+const links: Array<AppNavLink> = [
   {
-    id: '0',
     name: 'Проекты',
-    path: '/projects',
+    to: '/projects',
   },
   {
-    id: '1',
     name: 'Инфо',
-    path: '#',
+    to: '#',
   },
   {
-    id: '2',
     name: 'Мой профиль',
-    path: '#',
+    to: '#',
   },
 ];
 
@@ -33,9 +30,9 @@ export const Navbar: FC = () => (
         </div>
         <nav>
           <ul className='flex space-x-3'>
-            {links.map(({ id, name, path }) => (
-              <li key={id}>
-                <NavLink to={path}>{name}</NavLink>
+            {links.map(({ name, to }) => (
+              <li key={name}>
+                <NavLink to={to}>{name}</NavLink>
               </li>
             ))}
           </ul>

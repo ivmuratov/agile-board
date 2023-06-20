@@ -8,12 +8,7 @@ export const projectApi = rtkApi.injectEndpoints({
         url: 'projects',
       }),
     }),
-    getProjectById: build.query<Project, string>({
-      query: (projectId: string) => ({
-        url: `projects/${projectId}`,
-      }),
-    }),
   }),
 });
 
-export const { useGetProjectByIdQuery, useGetProjectListQuery } = projectApi;
+export const { useGetProjectListQuery } = projectApi;

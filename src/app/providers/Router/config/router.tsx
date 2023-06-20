@@ -2,12 +2,12 @@ import { RouteObject } from 'react-router-dom';
 
 import AgileBoard from '@/components/AgileBoard/AgileBoard';
 import AgileTaskListTable from '@/components/AgileTaskListTable/AgileTaskListTable';
-import ProjectInfo from '@/components/ProjectInfo/ProjectInfo';
-import TeamInfo from '@/components/TeamInfo/TeamInfo';
 import { MainPage } from '@/pages/MainPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
+import { ProjectDetailsPage } from '@/pages/ProjectDetailsPage';
 import { ProjectListPage } from '@/pages/ProjectListPage';
 import { ProjectPage } from '@/pages/ProjectPage';
+import { ProjectTeamPage } from '@/pages/ProjectTeamPage';
 import {
   AppRoutes,
   ProjectRoutes,
@@ -23,7 +23,7 @@ import {
 const projectRoutes: Record<ProjectRoutes, RouteObject> = {
   [ProjectRoutes.INFO]: {
     index: true,
-    element: <ProjectInfo />,
+    element: <ProjectDetailsPage />,
   },
   [ProjectRoutes.BOARD]: {
     path: getProjectRouteBoard(),
@@ -31,7 +31,7 @@ const projectRoutes: Record<ProjectRoutes, RouteObject> = {
   },
   [ProjectRoutes.TEAM]: {
     path: getProjectRouteTeam(),
-    element: <TeamInfo />,
+    element: <ProjectTeamPage />,
   },
   [ProjectRoutes.TASKS]: {
     path: getProjectRouteTasks(),

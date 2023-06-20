@@ -1,4 +1,4 @@
-export interface Project {
+export interface ProjectSchema {
   id: string;
   name: string;
   prefix: string;

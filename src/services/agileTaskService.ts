@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import IAgileTask from '../models/IAgileTask';
+import type { TaskSchema } from '@/entities/Task';
 
 export const agileTaskAPI = createApi({
   reducerPath: ' agileTaskAPI',
@@ -9,7 +9,7 @@ export const agileTaskAPI = createApi({
   }),
   tagTypes: ['agileTask'],
   endpoints: build => ({
-    getAgileTaskList: build.query<IAgileTask[], string>({
+    getAgileTaskList: build.query<TaskSchema[], string>({
       query: (projectId: string) => ({
         url: `${projectId}/tasks`,
       }),

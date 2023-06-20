@@ -1,12 +1,11 @@
 import { FC, ReactNode, memo } from 'react';
 
 export interface TableColumn {
-  id: string;
   value: string;
 }
 
 export interface TableRowElement {
-  id: string;
+  keyId: string;
   value: ReactNode;
 }
 
@@ -24,8 +23,8 @@ export const Table: FC<TableProps> = memo(({ columns, rows }) => (
   <table className='min-w-full border p-3'>
     <thead className='h-12 border bg-violet-100/50 text-left'>
       <tr>
-        {columns.map(({ id, value }) => (
-          <th className='px-4 font-medium opacity-90' key={id}>
+        {columns.map(({ value }) => (
+          <th className='px-4 font-medium opacity-90' key={value}>
             {value}
           </th>
         ))}
@@ -34,8 +33,8 @@ export const Table: FC<TableProps> = memo(({ columns, rows }) => (
     <tbody>
       {rows.map(({ id, items }) => (
         <tr className='h-10 px-4 opacity-90 hover:bg-violet-200/50' key={id}>
-          {items.map(({ id, value }) => (
-            <td className='px-4' key={id}>
+          {items.map(({ keyId, value }) => (
+            <td className='px-4' key={keyId}>
               {value}
             </td>
           ))}

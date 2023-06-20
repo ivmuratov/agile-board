@@ -1,5 +1,5 @@
-export default interface IAgileTask {
-  _id: string;
+export interface TaskSchema {
+  id: string;
   name: string;
   description: string;
   category: string;

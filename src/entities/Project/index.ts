@@ -1,3 +1,3 @@
-import type { Project } from './model/types/project';
+import type { ProjectSchema } from './model/types/project';
 
-export { Project };
+export { ProjectSchema };

@@ -1,25 +1,21 @@
 import { memo, FC, useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Project } from '@/entities/Project';
+import { ProjectSchema } from '@/entities/Project';
 import { Table, TableColumn, TableRow } from '@/shared/ui/Table';
 import { EmptyTable } from '@/widgets/EmptyTable';
 
 const columns: TableColumn[] = [
   {
-    id: '0',
     value: 'Префикс',
   },
   {
-    id: '1',
     value: 'Проект',
   },
   {
-    id: '2',
     value: 'Менеджер',
   },
   {
-    id: '3',
     value: 'Задачи',
   },
 ];
@@ -27,7 +23,7 @@ const columns: TableColumn[] = [
 interface ProjectListTableProps {
   className?: string;
   isLoading: boolean;
-  data?: Project[];
+  data?: ProjectSchema[];
   openModal: () => void;
 }
 
@@ -39,11 +35,11 @@ export const ProjectListTable: FC<ProjectListTableProps> = memo(
           id,
           items: [
             {
-              id: '0',
+              keyId: '0',
               value: prefix,
             },
             {
-              id: '1',
+              keyId: '1',
               value: (
                 <NavLink to={`/projects/${id}`} className='hover:text-blue-500'>
                   {name}
@@ -51,11 +47,11 @@ export const ProjectListTable: FC<ProjectListTableProps> = memo(
               ),
             },
             {
-              id: '2',
+              keyId: '2',
               value: manager,
             },
             {
-              id: '3',
+              keyId: '3',
               value: countTasks,
             },
           ],

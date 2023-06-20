@@ -1,9 +1,9 @@
-import { Project } from '@/entities/Project';
+import { ProjectSchema } from '@/entities/Project';
 import { rtkApi } from '@/shared/api/rtkApi';
 
 export const projectApi = rtkApi.injectEndpoints({
   endpoints: build => ({
-    getProjectList: build.query<Project[], void>({
+    getProjectList: build.query<ProjectSchema[], void>({
       query: () => ({
         url: 'projects',
       }),

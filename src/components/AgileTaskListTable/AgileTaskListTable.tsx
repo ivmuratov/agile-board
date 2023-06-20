@@ -12,43 +12,33 @@ import { EmptyTable } from '@/widgets/EmptyTable';
 
 const columns: TableColumn[] = [
   {
-    id: '0',
     value: 'Название',
   },
   {
-    id: '1',
     value: 'Тип',
   },
   {
-    id: '2',
     value: 'Приоритет',
   },
   {
-    id: '3',
     value: 'Категория',
   },
   {
-    id: '4',
     value: 'Статус',
   },
   {
-    id: '5',
     value: 'Автор',
   },
   {
-    id: '6',
     value: 'Исполнитель',
   },
   {
-    id: '7',
     value: 'Создана',
   },
   {
-    id: '8',
     value: 'Изменена',
   },
   {
-    id: '9',
     value: 'Завершена',
   },
 ];
@@ -75,7 +65,7 @@ const AgileTaskListTable: FC = () => {
           columns={columns}
           rows={data.map(
             ({
-              _id,
+              id,
               name,
               type,
               priority,
@@ -87,46 +77,46 @@ const AgileTaskListTable: FC = () => {
               updatedDate,
               finishedDate,
             }) => ({
-              id: _id,
+              id,
               items: [
                 {
-                  id: '0',
+                  keyId: '0',
                   value: name,
                 },
                 {
-                  id: '1',
+                  keyId: '1',
                   value: type,
                 },
                 {
-                  id: '2',
+                  keyId: '2',
                   value: priority,
                 },
                 {
-                  id: '3',
+                  keyId: '3',
                   value: category,
                 },
                 {
-                  id: '4',
+                  keyId: '4',
                   value: status,
                 },
                 {
-                  id: '5',
+                  keyId: '5',
                   value: author,
                 },
                 {
-                  id: '6',
+                  keyId: '6',
                   value: executor,
                 },
                 {
-                  id: '7',
+                  keyId: '7',
                   value: createdDate,
                 },
                 {
-                  id: '8',
+                  keyId: '8',
                   value: updatedDate || '-',
                 },
                 {
-                  id: '9',
+                  keyId: '9',
                   value: finishedDate || '-',
                 },
               ],

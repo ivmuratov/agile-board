@@ -1,8 +1,11 @@
 import { memo, FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
+import { useCreateProjectMutation } from '../../api/createProjectApi';
 import { CreateProjectFormSchema } from '../../model/types/createProjectForm';
 
+import { getAppRouteProject } from '@/shared/routes/routes';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 
@@ -13,8 +16,17 @@ export interface CreateProjectFormProps {
 const CreateProjectForm: FC<CreateProjectFormProps> = memo(({ onCancelHandler }) => {
   const { register, handleSubmit } = useForm<CreateProjectFormSchema>();
 
-  // eslint-disable-next-line no-console
-  const onSubmit: SubmitHandler<CreateProjectFormSchema> = data => console.log(data);
+  const navigate = useNavigate();
+
+  const [createProject] = useCreateProjectMutation();
+
+  const onSubmit: SubmitHandler<CreateProjectFormSchema> = async data => {
+    const created = await createProject(data).unwrap();
+
+    if (created) {
+      navigate(getAppRouteProject(created.id));
+    }
+  };
 
   return (
     <form className='mb-3 space-y-5' onSubmit={handleSubmit(onSubmit)}>

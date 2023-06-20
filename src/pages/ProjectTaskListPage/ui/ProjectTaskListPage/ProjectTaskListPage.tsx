@@ -2,9 +2,9 @@ import { skipToken } from '@reduxjs/toolkit/dist/query';
 import { FC } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { useGetProjectTaskListQuery } from '../../api/projectTaskListApi';
 import { ProjectTaskListTable } from '../ProjectTaskListTable/ProjectTaskListTable';
 
+import { useGetTaskListQuery } from '@/entities/Task';
 import { CreateTaskModal } from '@/features/CreateTaskForm';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { AppParams } from '@/shared/types/route';
@@ -16,7 +16,7 @@ interface ProjectTaskListPageProps {
 const ProjectTaskListPage: FC<ProjectTaskListPageProps> = ({ className }) => {
   const { projectId } = useParams<AppParams>();
 
-  const { data, isLoading } = useGetProjectTaskListQuery(projectId ?? skipToken);
+  const { data, isLoading } = useGetTaskListQuery(projectId ?? skipToken);
 
   const { isOpenModal, openModalHandler, closeModalHandler } = useModal();
 

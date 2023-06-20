@@ -1,4 +1,4 @@
-import { memo, FC } from 'react';
+import { FC } from 'react';
 
 import { useGetProjectListQuery } from '../../api/projectListApi';
 import { ProjectListTable } from '../ProjectListTable/ProjectListTable';
@@ -11,7 +11,7 @@ interface ProjectListPageProps {
   className?: string;
 }
 
-const ProjectListPage: FC<ProjectListPageProps> = memo(({ className }) => {
+const ProjectListPage: FC<ProjectListPageProps> = ({ className }) => {
   const { data, isLoading } = useGetProjectListQuery();
 
   const { isOpenModal, openModalHandler, closeModalHandler } = useModal();
@@ -26,6 +26,6 @@ const ProjectListPage: FC<ProjectListPageProps> = memo(({ className }) => {
       <CreateProjectModal isOpen={isOpenModal} onClose={closeModalHandler} />
     </main>
   );
-});
+};
 
 export default ProjectListPage;

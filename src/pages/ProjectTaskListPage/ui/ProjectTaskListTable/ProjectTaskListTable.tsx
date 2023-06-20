@@ -98,11 +98,11 @@ export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
               },
               {
                 keyId: '8',
-                value: updatedDate ?? '-',
+                value: updatedDate || '-',
               },
               {
                 keyId: '9',
-                value: finishedDate ?? '-',
+                value: finishedDate || '-',
               },
             ],
           }),

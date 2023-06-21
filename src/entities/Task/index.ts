@@ -1,6 +1,6 @@
 import { useGetTaskListQuery } from './api/taskApi';
 import { TaskCard } from './ui/TaskCard/TaskCard';
 
-import type { TaskSchema } from './model/types/task';
+import type { TaskSchema, StatusType } from './model/types/task';
 
-export { useGetTaskListQuery, TaskCard, TaskSchema };
+export { useGetTaskListQuery, TaskCard, TaskSchema, StatusType };

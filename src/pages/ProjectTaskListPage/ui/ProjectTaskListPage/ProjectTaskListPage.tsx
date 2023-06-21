@@ -16,14 +16,16 @@ interface ProjectTaskListPageProps {
 const ProjectTaskListPage: FC<ProjectTaskListPageProps> = ({ className }) => {
   const { projectId } = useParams<AppParams>();
 
-  const { data, isLoading } = useGetTaskListQuery(projectId ?? skipToken);
+  const { data, isLoading } = useGetTaskListQuery(projectId ?? skipToken, {
+    refetchOnMountOrArgChange: true,
+  });
 
   const { isOpenModal, openModalHandler, closeModalHandler } = useModal();
 
   return (
     <div className={className}>
       <ProjectTaskListTable data={data} isLoading={isLoading} openModal={openModalHandler} />
-      <CreateTaskModal isOpen={isOpenModal} onClose={closeModalHandler} />
+      <CreateTaskModal projectId={projectId} isOpen={isOpenModal} onClose={closeModalHandler} />
     </div>
   );
 };

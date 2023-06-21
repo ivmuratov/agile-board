@@ -7,6 +7,7 @@ export const taskApi = rtkApi.injectEndpoints({
       query: (projectId: string) => ({
         url: `/projects/${projectId}/tasks`,
       }),
+      providesTags: ['project_tasks'],
     }),
   }),
 });

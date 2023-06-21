@@ -12,5 +12,6 @@ export const rtkApi = createApi({
       return headers;
     }, */
   }),
+  tagTypes: ['project_tasks'],
   endpoints: builder => ({}),
 });

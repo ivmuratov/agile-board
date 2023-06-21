@@ -12,7 +12,7 @@ interface CreateProjectModalProps {
 export const CreateProjectModal: FC<CreateProjectModalProps> = ({ isOpen, onClose }) => (
   <Modal isOpen={isOpen} onClose={onClose} title='Новый проект'>
     <Suspense fallback={<div>... loading</div>}>
-      <CreateProjectFormAsync onCancelHandler={onClose} />
+      <CreateProjectFormAsync cancelHandler={onClose} />
     </Suspense>
   </Modal>
 );

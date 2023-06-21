@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { memo, FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -10,10 +11,10 @@ import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 
 export interface CreateProjectFormProps {
-  onCancelHandler?: () => void;
+  cancelHandler?: () => void;
 }
 
-const CreateProjectForm: FC<CreateProjectFormProps> = memo(({ onCancelHandler }) => {
+const CreateProjectForm: FC<CreateProjectFormProps> = memo(({ cancelHandler }) => {
   const { register, handleSubmit } = useForm<CreateProjectFormSchema>();
 
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ const CreateProjectForm: FC<CreateProjectFormProps> = memo(({ onCancelHandler })
         <Button type='submit' theme='success'>
           Сохранить
         </Button>
-        <Button type='reset' theme='secondary' onClick={onCancelHandler}>
+        <Button type='reset' theme='secondary' onClick={cancelHandler}>
           Отменить
         </Button>
       </div>

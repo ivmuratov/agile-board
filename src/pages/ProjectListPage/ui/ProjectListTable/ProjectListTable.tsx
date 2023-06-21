@@ -67,8 +67,8 @@ export const ProjectListTable: FC<ProjectListTableProps> = memo(
       content = (
         <EmptyTable
           title='Нет проектов Agile'
-          buttonTitle='Создать проект'
-          buttonAction={openModal}
+          buttonName='Создать проект'
+          createRowHandler={openModal}
         />
       );
     } else if (rows && rows.length !== 0) {

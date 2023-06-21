@@ -1,8 +1,10 @@
-import { memo, FC, useMemo } from 'react';
+import { memo, FC, useMemo, Fragment } from 'react';
 
 import { TaskSchema } from '@/entities/Task';
+import { Button } from '@/shared/ui/Button';
 import { Table, TableColumn, TableRow } from '@/shared/ui/Table';
 import { EmptyTable } from '@/widgets/EmptyTable';
+import { ProjectTaskListFilters } from '@/widgets/ProjectTaskListFilters';
 
 const columns: TableColumn[] = [
   {
@@ -118,12 +120,17 @@ export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
       content = (
         <EmptyTable
           title='Нет задач в проекте'
-          buttonTitle='Создать задачу'
-          buttonAction={openModal}
+          buttonName='Создать задачу'
+          createRowHandler={openModal}
         />
       );
     } else if (rows && rows.length !== 0) {
-      content = <Table columns={columns} rows={rows} />;
+      content = (
+        <Fragment>
+          <ProjectTaskListFilters className='mb-5' createTaskHandler={openModal} />
+          <Table columns={columns} rows={rows} />
+        </Fragment>
+      );
     } else {
       content = null;
     }

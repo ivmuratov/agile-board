@@ -67,12 +67,7 @@ export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
 
     const openEditModalHandler = (id: string, editTask: EditTaskFormSchema) => () => {
       setTaskId(id);
-      dispatch(editTaskFormActions.setName(editTask.name || ''));
-      dispatch(editTaskFormActions.setDescription(editTask.description || ''));
-      dispatch(editTaskFormActions.setCategory(editTask.category || ''));
-      dispatch(editTaskFormActions.setExecutor(editTask.executor || ''));
-      dispatch(editTaskFormActions.setStatus(editTask.status || 'to do'));
-      dispatch(editTaskFormActions.setPriority(editTask.priority || '0'));
+      dispatch(editTaskFormActions.setEditForm(editTask));
       openModalHandler();
     };
 

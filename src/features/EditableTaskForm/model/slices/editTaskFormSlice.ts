@@ -3,38 +3,26 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { EditTaskFormSchema } from '../types/editableTaskForm';
 
-import { PriorityType, StatusType } from '@/entities/Task';
-
 const initialState: EditTaskFormSchema = {
-  name: '',
-  description: '',
-  category: '',
-  executor: '',
-  status: 'to do',
-  priority: '0',
+  name: undefined,
+  description: undefined,
+  category: undefined,
+  executor: undefined,
+  status: undefined,
+  priority: undefined,
 };
 
 export const editTaskFormSlice = createSlice({
   name: 'editTaskForm',
   initialState,
   reducers: {
-    setName(state, action: PayloadAction<string>) {
-      state.name = action.payload;
-    },
-    setDescription(state, action: PayloadAction<string>) {
-      state.description = action.payload;
-    },
-    setCategory(state, action: PayloadAction<string>) {
-      state.category = action.payload;
-    },
-    setExecutor(state, action: PayloadAction<string>) {
-      state.executor = action.payload;
-    },
-    setStatus(state, action: PayloadAction<StatusType>) {
-      state.status = action.payload;
-    },
-    setPriority(state, action: PayloadAction<PriorityType>) {
-      state.priority = action.payload;
+    setEditForm(state, action: PayloadAction<EditTaskFormSchema>) {
+      state.name = action.payload.name;
+      state.description = action.payload.description;
+      state.category = action.payload.category;
+      state.executor = action.payload.executor;
+      state.status = action.payload.status;
+      state.priority = action.payload.priority;
     },
   },
 });

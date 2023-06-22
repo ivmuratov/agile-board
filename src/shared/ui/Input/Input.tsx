@@ -10,9 +10,11 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, label, placeholder, textHelper, ...props }, ref) => (
     <div className={`flex flex-col ${className}`}>
-      <label className='mb-2 font-medium opacity-80' htmlFor={label}>
-        {label}
-      </label>
+      {label && (
+        <label className='mb-2 font-medium opacity-80' htmlFor={label}>
+          {label}
+        </label>
+      )}
       <input
         type='text'
         className='mb-1 rounded border border-slate-50 bg-violet-100/60 px-3 py-2 transition-colors focus:border focus:border-gray-300 focus:bg-slate-50 focus:outline-none'
@@ -20,7 +22,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         placeholder={placeholder}
         {...props}
       />
-      <div className='text-sm font-medium text-gray-500/80'>{textHelper}</div>
+      {textHelper && <div className='text-sm font-medium text-gray-500/80'>{textHelper}</div>}
     </div>
   ),
 );

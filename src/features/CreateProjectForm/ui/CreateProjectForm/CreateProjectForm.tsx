@@ -31,10 +31,13 @@ const CreateProjectForm: FC<CreateProjectFormProps> = memo(({ cancelHandler }) =
 
   return (
     <form className='mb-3 space-y-5' onSubmit={handleSubmit(onSubmit)}>
-      <div className='flex justify-between space-x-8'>
-        <div className='grow'>
-          <Input label='Название' textHelper='Краткое название проекта' {...register('name')} />
-        </div>
+      <div className='flex gap-x-8'>
+        <Input
+          className='grow'
+          label='Название'
+          textHelper='Краткое название проекта'
+          {...register('name')}
+        />
         <Input label='Уникальный префикс' textHelper='Например "ABC"' {...register('prefix')} />
       </div>
       <Input label='Описание' {...register('description')} />

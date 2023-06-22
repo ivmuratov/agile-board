@@ -1,7 +1,6 @@
 import { memo, FC, useMemo, Fragment } from 'react';
 
 import { TaskSchema } from '@/entities/Task';
-import { Button } from '@/shared/ui/Button';
 import { Table, TableColumn, TableRow } from '@/shared/ui/Table';
 import { EmptyTable } from '@/widgets/EmptyTable';
 import { ProjectTaskListFilters } from '@/widgets/ProjectTaskListFilters';
@@ -11,13 +10,13 @@ const columns: TableColumn[] = [
     value: 'Название',
   },
   {
+    value: 'Категория',
+  },
+  {
     value: 'Тип',
   },
   {
     value: 'Приоритет',
-  },
-  {
-    value: 'Категория',
   },
   {
     value: 'Статус',
@@ -72,15 +71,15 @@ export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
               },
               {
                 keyId: '1',
-                value: type,
+                value: category || '-',
               },
               {
                 keyId: '2',
-                value: priority,
+                value: type,
               },
               {
                 keyId: '3',
-                value: category,
+                value: priority,
               },
               {
                 keyId: '4',
@@ -92,7 +91,7 @@ export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
               },
               {
                 keyId: '6',
-                value: executor,
+                value: executor || '-',
               },
               {
                 keyId: '7',

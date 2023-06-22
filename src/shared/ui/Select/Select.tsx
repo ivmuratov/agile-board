@@ -16,13 +16,17 @@ const Select = forwardRef(
     { className, options, label, ...props }: SelectProps<T>,
     ref: Ref<HTMLSelectElement>,
   ) => (
-    <div className={`flex items-center gap-x-2 ${className}`}>
+    <div className={`flex flex-col gap-y-2 ${className}`}>
       <label className='font-medium opacity-80' htmlFor={label}>
         {label}
       </label>
-      <select ref={ref} {...props}>
+      <select
+        className='rounded border border-slate-50 bg-violet-100/60 px-3 py-2 transition-colors focus:border focus:border-gray-300 focus:bg-slate-50 focus:outline-none'
+        ref={ref}
+        {...props}
+      >
         {options.map(({ value, name }) => (
-          <option key={value} value={value}>
+          <option className='hover:bg-violet-100/60' key={value} value={value}>
             {name}
           </option>
         ))}

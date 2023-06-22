@@ -66,11 +66,10 @@ const CreateTaskForm: FC<CreateTaskFormProps> = memo(({ projectId, cancelHandler
   const [create] = useCreateTaskMutation();
 
   const onSubmit: SubmitHandler<CreateTaskFormSchema> = async data => {
-    /* if (projectId) {
+    if (projectId) {
       await create({ projectId, createdDate: new Date().toLocaleDateString(), ...data });
       cancelHandler?.();
-    } */
-    console.log(data);
+    }
   };
 
   return (
@@ -80,24 +79,18 @@ const CreateTaskForm: FC<CreateTaskFormProps> = memo(({ projectId, cancelHandler
         <Input label='Категория' {...register('category')} />
       </div>
       <Input label='Описание' {...register('description')} />
-      <div className='flex items-center gap-x-14'>
-        <div className='flex w-full flex-col gap-y-7'>
-          <Select<StatusType>
-            label='Выберите статус'
-            options={statusOptions}
-            {...register('status')}
-          />
-          <Select<TaskType> label='Выберите тип' options={typeOptions} {...register('type')} />
-          <Select<PriorityType>
-            label='Выберите приоритет'
-            options={priorityOptions}
-            {...register('priority')}
-          />
-        </div>
-        <div className='flex w-full flex-col'>
-          <Input label='Автор' {...register('author')} />
-          <Input label='Исполнитель' {...register('executor')} />
-        </div>
+      <div className='flex gap-x-8'>
+        <Input className='w-full' label='Автор' {...register('author')} />
+        <Input className='w-full' label='Исполнитель' {...register('executor')} />
+      </div>
+      <div className='flex gap-x-8'>
+        <Select<StatusType> label='Статус' options={statusOptions} {...register('status')} />
+        <Select<TaskType> label='Тип' options={typeOptions} {...register('type')} />
+        <Select<PriorityType>
+          label='Приоритет'
+          options={priorityOptions}
+          {...register('priority')}
+        />
       </div>
       <div className='flex justify-end space-x-2'>
         <Button type='submit' theme='success'>

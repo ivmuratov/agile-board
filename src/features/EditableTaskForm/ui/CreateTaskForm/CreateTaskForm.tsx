@@ -2,78 +2,39 @@
 import { memo, FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { useCreateTaskMutation } from '../../api/createTaskApi';
-import { CreateTaskFormSchema } from '../../model/types/createTaskForm';
+import { useCreateTaskMutation } from '../../api/editableTaskApi';
+import {
+  getPriorityTypeOptions,
+  getStatusTypeOptions,
+  getTaskTypeOptions,
+} from '../../lib/helpers/getOptions/getOptions';
+import { CreateTaskFormSchema } from '../../model/types/editableTaskForm';
 
 import { PriorityType, StatusType, TaskType } from '@/entities/Task';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
-import { Option, Select } from '@/shared/ui/Select';
-
-const statusOptions: Option<StatusType>[] = [
-  {
-    value: 'to do',
-    name: 'Сделать',
-  },
-  {
-    value: 'in progress',
-    name: 'В процессе',
-  },
-  {
-    value: 'in review',
-    name: 'На проверке',
-  },
-  {
-    value: 'done',
-    name: 'Принято',
-  },
-];
-
-const typeOptions: Option<TaskType>[] = [
-  {
-    value: 'task',
-    name: 'Задача',
-  },
-  {
-    value: 'error',
-    name: 'Ошибка',
-  },
-];
-
-const priorityOptions: Option<PriorityType>[] = [
-  {
-    value: '0',
-    name: 'Низкий',
-  },
-  {
-    value: '1',
-    name: 'Средний',
-  },
-  {
-    value: '2',
-    name: 'Высокий',
-  },
-];
+import { Select } from '@/shared/ui/Select';
 
 export interface CreateTaskFormProps {
+  className?: string;
   projectId?: string;
   cancelHandler?: () => void;
 }
 
-const CreateTaskForm: FC<CreateTaskFormProps> = memo(({ projectId, cancelHandler }) => {
+const CreateTaskForm: FC<CreateTaskFormProps> = memo(({ className, projectId, cancelHandler }) => {
   const { register, handleSubmit } = useForm<CreateTaskFormSchema>();
 
   const [create] = useCreateTaskMutation();
 
   const onSubmit: SubmitHandler<CreateTaskFormSchema> = async data => {
     if (projectId) {
-      await create({ projectId, createdDate: new Date().toLocaleDateString(), ...data });
+      await create({ projectId, ...data });
       cancelHandler?.();
     }
   };
 
   return (
-    <form className='mb-3 space-y-5' onSubmit={handleSubmit(onSubmit)}>
+    <form className={`mb-3 space-y-5 ${className}`} onSubmit={handleSubmit(onSubmit)}>
       <div className='flex gap-x-8'>
         <Input className='grow' label='Название' {...register('name')} />
         <Input label='Категория' {...register('category')} />
@@ -84,11 +45,15 @@ const CreateTaskForm: FC<CreateTaskFormProps> = memo(({ projectId, cancelHandler
         <Input className='w-full' label='Исполнитель' {...register('executor')} />
       </div>
       <div className='flex gap-x-8'>
-        <Select<StatusType> label='Статус' options={statusOptions} {...register('status')} />
-        <Select<TaskType> label='Тип' options={typeOptions} {...register('type')} />
+        <Select<StatusType>
+          label='Статус'
+          options={getStatusTypeOptions()}
+          {...register('status')}
+        />
+        <Select<TaskType> label='Тип' options={getTaskTypeOptions()} {...register('type')} />
         <Select<PriorityType>
           label='Приоритет'
-          options={priorityOptions}
+          options={getPriorityTypeOptions()}
           {...register('priority')}
         />
       </div>

@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { ProjectTaskListTable } from '../ProjectTaskListTable/ProjectTaskListTable';
 
 import { useGetTaskListQuery } from '@/entities/Task';
-import { CreateTaskModal } from '@/features/CreateTaskForm';
+import { EditableTaskModal } from '@/features/EditableTaskForm';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { AppParams } from '@/shared/types/route';
 
@@ -24,8 +24,13 @@ const ProjectTaskListPage: FC<ProjectTaskListPageProps> = ({ className }) => {
 
   return (
     <div className={className}>
-      <ProjectTaskListTable data={data} isLoading={isLoading} openModal={openModalHandler} />
-      <CreateTaskModal projectId={projectId} isOpen={isOpenModal} onClose={closeModalHandler} />
+      <ProjectTaskListTable
+        projectId={projectId}
+        data={data}
+        isLoading={isLoading}
+        openCreateModalHandler={openModalHandler}
+      />
+      <EditableTaskModal projectId={projectId} isOpen={isOpenModal} onClose={closeModalHandler} />
     </div>
   );
 };

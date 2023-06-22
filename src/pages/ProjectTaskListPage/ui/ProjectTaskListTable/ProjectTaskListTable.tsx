@@ -1,6 +1,14 @@
-import { memo, FC, useMemo, Fragment } from 'react';
+import { memo, FC, useMemo, Fragment, useState } from 'react';
 
 import { TaskSchema } from '@/entities/Task';
+import {
+  EditTaskFormSchema,
+  EditableTaskModal,
+  editTaskFormActions,
+} from '@/features/EditableTaskForm';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useModal } from '@/shared/lib/hooks/useModal/useModal';
+import { Button } from '@/shared/ui/Button';
 import { Table, TableColumn, TableRow } from '@/shared/ui/Table';
 import { EmptyTable } from '@/widgets/EmptyTable';
 import { ProjectTaskListFilters } from '@/widgets/ProjectTaskListFilters';
@@ -36,23 +44,45 @@ const columns: TableColumn[] = [
   {
     value: 'Завершена',
   },
+  {
+    value: '',
+  },
 ];
 
 interface ProjectTaskListTableProps {
   className?: string;
+  projectId?: string;
   isLoading: boolean;
   data?: TaskSchema[];
-  openModal: () => void;
+  openCreateModalHandler: () => void;
 }
 
 export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
-  ({ className, isLoading, data, openModal }) => {
+  ({ className, projectId, isLoading, data, openCreateModalHandler }) => {
+    const { isOpenModal, openModalHandler, closeModalHandler } = useModal();
+
+    const dispatch = useAppDispatch();
+
+    const [taskId, setTaskId] = useState<string | undefined>(undefined);
+
+    const openEditModalHandler = (id: string, editTask: EditTaskFormSchema) => () => {
+      setTaskId(id);
+      dispatch(editTaskFormActions.setName(editTask.name || ''));
+      dispatch(editTaskFormActions.setDescription(editTask.description || ''));
+      dispatch(editTaskFormActions.setCategory(editTask.category || ''));
+      dispatch(editTaskFormActions.setExecutor(editTask.executor || ''));
+      dispatch(editTaskFormActions.setStatus(editTask.status || 'to do'));
+      dispatch(editTaskFormActions.setPriority(editTask.priority || '0'));
+      openModalHandler();
+    };
+
     const rows: TableRow[] | undefined = useMemo(
       () =>
         data?.map(
           ({
             id,
             name,
+            description,
             type,
             priority,
             category,
@@ -105,6 +135,23 @@ export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
                 keyId: '9',
                 value: finishedDate || '-',
               },
+              {
+                keyId: '10',
+                value: (
+                  <Button
+                    onClick={openEditModalHandler(id, {
+                      name,
+                      description,
+                      category,
+                      executor,
+                      status,
+                      priority,
+                    })}
+                  >
+                    Редактировать
+                  </Button>
+                ),
+              },
             ],
           }),
         ),
@@ -120,14 +167,20 @@ export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
         <EmptyTable
           title='Нет задач в проекте'
           buttonName='Создать задачу'
-          createRowHandler={openModal}
+          createRowHandler={openCreateModalHandler}
         />
       );
     } else if (rows && rows.length !== 0) {
       content = (
         <Fragment>
-          <ProjectTaskListFilters className='mb-5' createTaskHandler={openModal} />
+          <ProjectTaskListFilters className='mb-5' createTaskHandler={openCreateModalHandler} />
           <Table columns={columns} rows={rows} />
+          <EditableTaskModal
+            projectId={projectId}
+            taskId={taskId}
+            isOpen={isOpenModal}
+            onClose={closeModalHandler}
+          />
         </Fragment>
       );
     } else {

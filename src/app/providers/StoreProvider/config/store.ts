@@ -1,10 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
+import { editTaskFormReducer } from '@/features/EditableTaskForm';
 import { projectApi } from '@/pages/ProjectListPage/api/projectListApi';
 import { rtkApi } from '@/shared/api/rtkApi';
 
 const rootReducer = combineReducers({
   [rtkApi.reducerPath]: rtkApi.reducer,
+  editTaskForm: editTaskFormReducer,
 });
 
 export const createStore = () =>

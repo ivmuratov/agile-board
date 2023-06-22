@@ -10,3 +10,12 @@ export interface CreateTaskFormSchema {
   type: TaskType;
   priority: PriorityType;
 }
+
+export interface EditTaskFormSchema {
+  name?: string;
+  description?: string;
+  category?: string;
+  executor?: string;
+  status?: StatusType;
+  priority?: PriorityType;
+}

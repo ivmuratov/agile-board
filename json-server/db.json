@@ -25,30 +25,31 @@
   "tasks": [
     {
       "id": 1,
-      "name": "Задание 1",
-      "category": "Категория",
+      "name": "Задание updated 2",
+      "category": "updated 2",
       "author": "I. Muratov",
-      "executor": "I. Muratov",
+      "executor": "I. Muratoff",
       "status": "to do",
       "type": "task",
       "priority": "0",
       "createdDate": "01.01.2023, 00:00:00",
-      "updatedDate": "",
+      "updatedDate": "22.06.2023, 17:46:22",
       "finishedDate": "",
-      "projectId": 1
+      "projectId": 1,
+      "description": "описание"
     },
     {
       "id": 2,
-      "name": "Задание 2",
-      "description": "Описание к заданию 2",
-      "category": "Категория",
-      "author": "I. Muratov",
-      "executor": "I. Muratov",
+      "name": "updated 2222",
+      "description": "updated2222",
+      "category": "updated222",
+      "author": "updated",
+      "executor": "updated222222",
       "status": "to do",
       "type": "error",
       "priority": "1",
       "createdDate": "01.01.2023, 00:00:00",
-      "updatedDate": "",
+      "updatedDate": "22.06.2023, 18:25:25",
       "finishedDate": "",
       "projectId": 1
     },
@@ -85,15 +86,16 @@
     {
       "createdDate": "22.06.2023, 14:04:22",
       "name": "Тест таска",
-      "category": "123",
-      "description": "",
+      "category": "1234",
+      "description": "123",
       "author": "Иван",
       "executor": "",
       "status": "in review",
       "type": "error",
       "priority": "1",
       "projectId": "1",
-      "id": 5
+      "id": 5,
+      "updatedDate": "22.06.2023, 17:49:42"
     }
   ]
 }

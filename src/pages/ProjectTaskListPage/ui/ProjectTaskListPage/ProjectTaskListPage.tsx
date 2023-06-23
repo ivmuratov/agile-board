@@ -1,11 +1,12 @@
-import { skipToken } from '@reduxjs/toolkit/dist/query';
 import { FC } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { ProjectTaskListTable } from '../ProjectTaskListTable/ProjectTaskListTable';
 
 import { useGetTaskListQuery } from '@/entities/Task';
 import { EditableTaskModal } from '@/features/EditableTaskForm';
+import { getTaskFilterSearch } from '@/features/TaskFilter';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { AppParams } from '@/shared/types/route';
 
@@ -16,9 +17,14 @@ interface ProjectTaskListPageProps {
 const ProjectTaskListPage: FC<ProjectTaskListPageProps> = ({ className }) => {
   const { projectId } = useParams<AppParams>();
 
-  const { data, isLoading } = useGetTaskListQuery(projectId ?? skipToken, {
-    refetchOnMountOrArgChange: true,
-  });
+  const search = useSelector(getTaskFilterSearch);
+
+  const { data, isLoading } = useGetTaskListQuery(
+    { projectId: projectId ?? '1', search },
+    {
+      refetchOnMountOrArgChange: true,
+    },
+  );
 
   const { isOpenModal, openModalHandler, closeModalHandler } = useModal();
 

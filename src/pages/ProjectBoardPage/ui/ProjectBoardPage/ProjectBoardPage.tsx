@@ -1,10 +1,12 @@
 import { skipToken } from '@reduxjs/toolkit/dist/query';
 import { FC, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { BoardColumn } from '../BoardColumn/BoardColumn';
 
 import { useGetTaskListQuery } from '@/entities/Task';
+import { getTaskFilterSearch } from '@/features/TaskFilter';
 import { AppParams } from '@/shared/types/route';
 
 interface ProjectBoardPageProps {
@@ -14,7 +16,14 @@ interface ProjectBoardPageProps {
 const ProjectBoardPage: FC<ProjectBoardPageProps> = ({ className }) => {
   const { projectId } = useParams<AppParams>();
 
-  const { data, isLoading } = useGetTaskListQuery(projectId ?? skipToken);
+  const search = useSelector(getTaskFilterSearch);
+
+  const { data, isLoading } = useGetTaskListQuery(
+    { projectId: projectId ?? '1' },
+    {
+      refetchOnMountOrArgChange: true,
+    },
+  );
 
   const toDoTasks = useMemo(() => data?.filter(task => task.status === 'to do'), [data]);
 

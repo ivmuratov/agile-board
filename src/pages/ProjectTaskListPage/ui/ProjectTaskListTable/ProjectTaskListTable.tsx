@@ -6,9 +6,10 @@ import {
   EditableTaskModal,
   editTaskFormActions,
 } from '@/features/EditableTaskForm';
+import EditIcon from '@/shared/assets/edit.svg';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
-import { Button } from '@/shared/ui/Button';
+import { IconButton } from '@/shared/ui/IconButton';
 import { Table, TableColumn, TableRow } from '@/shared/ui/Table';
 import { EmptyTable } from '@/widgets/EmptyTable';
 import { ProjectTaskListFilters } from '@/widgets/ProjectTaskListFilters';
@@ -133,7 +134,8 @@ export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
               {
                 keyId: '10',
                 value: (
-                  <Button
+                  <IconButton
+                    Svg={EditIcon}
                     onClick={openEditModalHandler(id, {
                       name,
                       description,
@@ -142,9 +144,7 @@ export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
                       status,
                       priority,
                     })}
-                  >
-                    Редактировать
-                  </Button>
+                  />
                 ),
               },
             ],

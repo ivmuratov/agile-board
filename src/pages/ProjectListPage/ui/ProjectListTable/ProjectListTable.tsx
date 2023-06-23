@@ -31,28 +31,28 @@ export const ProjectListTable: FC<ProjectListTableProps> = memo(
   ({ className, isLoading, data, openModal }) => {
     const rows: TableRow[] | undefined = useMemo(
       () =>
-        data?.map(({ id, prefix, name, manager, countTasks }) => ({
-          id,
+        data?.map(project => ({
+          id: project.id,
           items: [
             {
               keyId: '0',
-              value: prefix,
+              value: project.prefix,
             },
             {
               keyId: '1',
               value: (
-                <NavLink to={`/projects/${id}`} className='hover:text-blue-500'>
-                  {name}
+                <NavLink to={`/projects/${project.id}`} className='hover:text-blue-500'>
+                  {project.name}
                 </NavLink>
               ),
             },
             {
               keyId: '2',
-              value: manager,
+              value: project.manager,
             },
             {
               keyId: '3',
-              value: countTasks,
+              value: project.countTasks,
             },
           ],
         })),

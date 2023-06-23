@@ -12,7 +12,7 @@ import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Table, TableColumn, TableRow } from '@/shared/ui/Table';
 import { EmptyTable } from '@/widgets/EmptyTable';
-import { ProjectTaskListFilters } from '@/widgets/ProjectTaskListFilters';
+import { TaskListHeader } from '@/widgets/TaskListHeader';
 
 const columns: TableColumn[] = [
   {
@@ -74,82 +74,67 @@ export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
 
     const rows: TableRow[] | undefined = useMemo(
       () =>
-        data?.map(
-          ({
-            id,
-            name,
-            description,
-            type,
-            priority,
-            category,
-            status,
-            author,
-            executor,
-            createdDate,
-            updatedDate,
-            finishedDate,
-          }) => ({
-            id,
-            items: [
-              {
-                keyId: '0',
-                value: name,
-              },
-              {
-                keyId: '1',
-                value: category || '-',
-              },
-              {
-                keyId: '2',
-                value: type,
-              },
-              {
-                keyId: '3',
-                value: priority,
-              },
-              {
-                keyId: '4',
-                value: status,
-              },
-              {
-                keyId: '5',
-                value: author,
-              },
-              {
-                keyId: '6',
-                value: executor || '-',
-              },
-              {
-                keyId: '7',
-                value: createdDate,
-              },
-              {
-                keyId: '8',
-                value: updatedDate || '-',
-              },
-              {
-                keyId: '9',
-                value: finishedDate || '-',
-              },
-              {
-                keyId: '10',
-                value: (
-                  <IconButton
-                    Svg={EditIcon}
-                    onClick={openEditModalHandler(id, {
-                      name,
-                      description,
-                      category,
-                      executor,
-                      status,
-                      priority,
-                    })}
-                  />
-                ),
-              },
-            ],
-          }),
-        ),
+        data?.map(task => ({
+          id: task.id,
+          items: [
+            {
+              keyId: '0',
+              value: task.name,
+            },
+            {
+              keyId: '1',
+              value: task.category || '-',
+            },
+            {
+              keyId: '2',
+              value: task.type,
+            },
+            {
+              keyId: '3',
+              value: task.priority,
+            },
+            {
+              keyId: '4',
+              value: task.status,
+            },
+            {
+              keyId: '5',
+              value: task.author,
+            },
+            {
+              keyId: '6',
+              value: task.executor || '-',
+            },
+            {
+              keyId: '7',
+              value: task.createdDate,
+            },
+            {
+              keyId: '8',
+              value: task.updatedDate || '-',
+            },
+            {
+              keyId: '9',
+              value: task.finishedDate || '-',
+            },
+            {
+              keyId: '10',
+              value: (
+                <IconButton
+                  Svg={EditIcon}
+                  onClick={openEditModalHandler(task.id, {
+                    name: task.name,
+                    description: task.description,
+                    category: task.category,
+                    executor: task.executor,
+                    status: task.status,
+                    priority: task.priority,
+                  })}
+                />
+              ),
+            },
+          ],
+        })),
       [data],
     );
 
@@ -168,7 +153,7 @@ export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
     } else if (rows && rows.length !== 0) {
       content = (
         <Fragment>
-          <ProjectTaskListFilters className='mb-5' createTaskHandler={openCreateModalHandler} />
+          <TaskListHeader className='mb-5' createTaskHandler={openCreateModalHandler} />
           <Table columns={columns} rows={rows} />
           <EditableTaskModal
             projectId={projectId}

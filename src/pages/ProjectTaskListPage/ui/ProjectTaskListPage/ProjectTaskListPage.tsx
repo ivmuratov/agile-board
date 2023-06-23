@@ -6,7 +6,7 @@ import { ProjectTaskListTable } from '../ProjectTaskListTable/ProjectTaskListTab
 
 import { useGetTaskListQuery } from '@/entities/Task';
 import { EditableTaskModal } from '@/features/EditableTaskForm';
-import { getTaskFilterSearch } from '@/features/TaskFilter';
+import { getTaskListFilterSearch } from '@/features/TaskListFilter';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { AppParams } from '@/shared/types/route';
 
@@ -17,7 +17,7 @@ interface ProjectTaskListPageProps {
 const ProjectTaskListPage: FC<ProjectTaskListPageProps> = ({ className }) => {
   const { projectId } = useParams<AppParams>();
 
-  const search = useSelector(getTaskFilterSearch);
+  const search = useSelector(getTaskListFilterSearch);
 
   const { data, isLoading } = useGetTaskListQuery(
     { projectId: projectId ?? '1', search },

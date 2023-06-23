@@ -1,14 +1,14 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import { editTaskFormReducer } from '@/features/EditableTaskForm';
-import { taskFilterReducer } from '@/features/TaskFilter';
+import { taskListFilterReducer } from '@/features/TaskListFilter';
 import { projectApi } from '@/pages/ProjectListPage/api/projectListApi';
 import { rtkApi } from '@/shared/api/rtkApi';
 
 const rootReducer = combineReducers({
   [rtkApi.reducerPath]: rtkApi.reducer,
   editTaskForm: editTaskFormReducer,
-  taskFilter: taskFilterReducer,
+  taskListFilter: taskListFilterReducer,
 });
 
 export const createStore = () =>

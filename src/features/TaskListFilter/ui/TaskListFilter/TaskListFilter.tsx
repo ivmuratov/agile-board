@@ -1,24 +1,24 @@
 import { memo, FC } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { taskFilterActions } from '../../model/slices/taskFilterSlice';
-import { TaskFilterSchema } from '../../model/types/taskFilterSchema';
+import { taskListFilterActions } from '../../model/slices/taskListFilterSlice';
+import { TaskListFilterSchema } from '../../model/types/taskListFilterSchema';
 
 import { useDebounce } from '@/shared/lib/helpers/useDebounce/useDebounce';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Input } from '@/shared/ui/Input';
 
-interface TaskFilterProps {
+interface TaskListFilterProps {
   className?: string;
 }
 
-export const TaskFilter: FC<TaskFilterProps> = memo(({ className }) => {
-  const { register, watch } = useForm<TaskFilterSchema>();
+export const TaskListFilter: FC<TaskListFilterProps> = memo(({ className }) => {
+  const { register, watch } = useForm<TaskListFilterSchema>();
 
   const dispatch = useAppDispatch();
 
   const setName = () => {
-    dispatch(taskFilterActions.setName(watch('search', '')));
+    dispatch(taskListFilterActions.setName(watch('search', '')));
   };
 
   useDebounce(setName, 800)();

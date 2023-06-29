@@ -23,9 +23,5 @@ export const TaskListFilter: FC<TaskListFilterProps> = memo(({ className }) => {
 
   useDebounce(setName, 800)();
 
-  return (
-    <form className={className}>
-      <Input placeholder='Поиск' {...register('search')} />
-    </form>
-  );
+  return <Input className={className} placeholder='Поиск' {...register('search')} />;
 });

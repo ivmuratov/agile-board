@@ -66,6 +66,7 @@
     "react/jsx-props-no-spreading": "warn",
     "no-shadow": "off",    
     "no-unused-vars": "off",
+    "no-plusplus": "off",
     "react/prop-types": "off",
     "react/require-default-props": "off",
     "react/function-component-definition": "off",

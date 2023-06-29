@@ -21,7 +21,7 @@ const links: Array<AppNavLink> = [
 ];
 
 export const Navbar: FC = () => (
-  <header className='mb-4 h-14 border bg-white'>
+  <header className='mb-4 h-14 border bg-slate-50'>
     <Container>
       <div className='flex h-full items-center justify-between'>
         <div className='flex items-center space-x-2'>

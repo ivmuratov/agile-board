@@ -1,26 +1,37 @@
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { ProjectTaskListTable } from '../ProjectTaskListTable/ProjectTaskListTable';
 
-import { useGetTaskListQuery } from '@/entities/Task';
+import { useGetTaskListPageSearchQuery, useGetTaskListQuery } from '@/entities/Task';
 import { EditableTaskModal } from '@/features/EditableTaskForm';
 import { getTaskListFilterSearch } from '@/features/TaskListFilter';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
+import { usePagination } from '@/shared/lib/hooks/usePagination/usePagination';
 import { AppParams } from '@/shared/types/route';
 
-interface ProjectTaskListPageProps {
-  className?: string;
-}
+const LIMIT = 10;
 
-const ProjectTaskListPage: FC<ProjectTaskListPageProps> = ({ className }) => {
+const ProjectTaskListPage: FC = () => {
   const { projectId } = useParams<AppParams>();
 
   const search = useSelector(getTaskListFilterSearch);
 
-  const { data, isLoading } = useGetTaskListQuery(
+  const { data: allTasks } = useGetTaskListQuery(
     { projectId: projectId ?? '1', search },
+    {
+      refetchOnMountOrArgChange: true,
+    },
+  );
+
+  const { page, totalPages, setPage, prevPageHandler, nextPageHandler } = usePagination(
+    allTasks?.length ?? 0,
+    LIMIT,
+  );
+
+  const { data, isLoading } = useGetTaskListPageSearchQuery(
+    { projectId: projectId ?? '1', search, page, limit: LIMIT },
     {
       refetchOnMountOrArgChange: true,
     },
@@ -29,15 +40,20 @@ const ProjectTaskListPage: FC<ProjectTaskListPageProps> = ({ className }) => {
   const { isOpenModal, openModalHandler, closeModalHandler } = useModal();
 
   return (
-    <div className={className}>
+    <Fragment>
       <ProjectTaskListTable
         projectId={projectId}
         data={data}
         isLoading={isLoading}
+        page={page}
+        totalPages={totalPages}
+        setPage={setPage}
+        nextPageHandler={nextPageHandler}
+        prevPageHandler={prevPageHandler}
         openCreateModalHandler={openModalHandler}
       />
       <EditableTaskModal projectId={projectId} isOpen={isOpenModal} onClose={closeModalHandler} />
-    </div>
+    </Fragment>
   );
 };
 

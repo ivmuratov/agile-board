@@ -32,7 +32,7 @@ interface TaskCardProps {
 export const TaskCard: FC<TaskCardProps> = memo(
   ({ className, name, description, category, author, executor, type, priority }) => (
     <li
-      className={`space-y-1 rounded-lg border-t-4 px-4 py-2 shadow-sm hover:shadow-md ${themes[priority]} ${className}`}
+      className={`space-y-2 rounded-lg border-t-4 px-4 py-2 shadow-sm hover:shadow-md ${themes[priority]} ${className}`}
     >
       <p className='font-medium text-gray-700'>{name}</p>
       {description && <InfoIcon fill='#374151' opacity='0.6' />}

@@ -12,6 +12,7 @@ import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Table, TableColumn, TableRow } from '@/shared/ui/Table';
 import { EmptyTable } from '@/widgets/EmptyTable';
+import { PaginationContainer } from '@/widgets/PaginationContainer';
 import { TaskListHeader } from '@/widgets/TaskListHeader';
 
 const columns: TableColumn[] = [
@@ -55,11 +56,27 @@ interface ProjectTaskListTableProps {
   projectId?: string;
   isLoading: boolean;
   data?: TaskSchema[];
+  page: number;
+  totalPages: number;
+  setPage: (page: number) => void;
+  prevPageHandler: () => void;
+  nextPageHandler: () => void;
   openCreateModalHandler: () => void;
 }
 
 export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
-  ({ className, projectId, isLoading, data, openCreateModalHandler }) => {
+  ({
+    className,
+    projectId,
+    isLoading,
+    data,
+    page,
+    totalPages,
+    setPage,
+    prevPageHandler,
+    nextPageHandler,
+    openCreateModalHandler,
+  }) => {
     const { isOpenModal, openModalHandler, closeModalHandler } = useModal();
 
     const dispatch = useAppDispatch();
@@ -144,17 +161,30 @@ export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
       content = <div>... is loading</div>;
     } else if (data && data.length === 0) {
       content = (
-        <EmptyTable
-          title='Нет задач в проекте'
-          buttonName='Создать задачу'
-          createRowHandler={openCreateModalHandler}
-        />
+        <Fragment>
+          <TaskListHeader className='mb-5' createTaskHandler={openCreateModalHandler} />
+          <EmptyTable
+            title='Нет задач в проекте'
+            buttonName='Создать задачу'
+            createRowHandler={openCreateModalHandler}
+          />
+        </Fragment>
       );
     } else if (rows && rows.length !== 0) {
       content = (
         <Fragment>
           <TaskListHeader className='mb-5' createTaskHandler={openCreateModalHandler} />
-          <Table columns={columns} rows={rows} />
+          <Table className='mb-5' columns={columns} rows={rows} />
+          {totalPages > 1 && (
+            <PaginationContainer
+              page={page}
+              totalPages={totalPages}
+              setPage={setPage}
+              prevPageHandler={prevPageHandler}
+              nextPageHandler={nextPageHandler}
+            />
+          )}
+
           <EditableTaskModal
             projectId={projectId}
             taskId={taskId}

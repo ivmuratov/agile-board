@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import { useGetProjectListQuery } from '../../api/projectListApi';
 import { ProjectListTable } from '../ProjectListTable/ProjectListTable';
 
+import { useGetProjectListQuery } from '@/entities/Project';
 import { CreateProjectModal } from '@/features/CreateProjectForm';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { Button } from '@/shared/ui/Button';

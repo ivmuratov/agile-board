@@ -1,4 +1,5 @@
-import { ProjectSchema } from '@/entities/Project';
+import { ProjectSchema } from '../model/types/project';
+
 import { rtkApi } from '@/shared/api/rtkApi';
 
 export const projectApi = rtkApi.injectEndpoints({

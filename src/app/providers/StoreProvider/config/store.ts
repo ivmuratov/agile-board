@@ -2,7 +2,6 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import { editTaskFormReducer } from '@/features/EditableTaskForm';
 import { taskListFilterReducer } from '@/features/TaskListFilter';
-import { projectApi } from '@/pages/ProjectListPage/api/projectListApi';
 import { rtkApi } from '@/shared/api/rtkApi';
 
 const rootReducer = combineReducers({
@@ -14,7 +13,7 @@ const rootReducer = combineReducers({
 export const createStore = () =>
   configureStore({
     reducer: rootReducer,
-    middleware: getDefaultMiddleware => getDefaultMiddleware().concat([projectApi.middleware]),
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat([rtkApi.middleware]),
   });
 
 export type RootState = ReturnType<typeof rootReducer>;

@@ -47,22 +47,22 @@ const ProjectTaskListPage: FC = () => {
     return <div>... is loading</div>;
   }
 
-  if (data && data.taskList.length === 0 && search !== '') {
-    return (
-      <Fragment>
-        <TaskListHeader className='mb-5' createTaskHandler={openModalHandler} />
-        <h2 className='pt-8 text-center text-3xl'>Ничего не найдено</h2>
-      </Fragment>
-    );
-  }
-
-  if (data && data.taskList.length === 0) {
+  if (data && data.taskList.length === 0 && search === '') {
     return (
       <EmptyTable
         title='Нет задач в проекте'
         buttonName='Создать задачу'
         createRowHandler={openModalHandler}
       />
+    );
+  }
+
+  if (data && data.taskList.length === 0 && search !== '') {
+    return (
+      <Fragment>
+        <TaskListHeader className='mb-5' createTaskHandler={openModalHandler} />
+        <h2 className='pt-8 text-center text-3xl'>Ничего не найдено</h2>
+      </Fragment>
     );
   }
 

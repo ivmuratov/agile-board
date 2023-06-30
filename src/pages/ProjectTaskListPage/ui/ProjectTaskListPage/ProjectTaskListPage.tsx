@@ -10,6 +10,8 @@ import { getTaskListFilterSearch } from '@/features/TaskListFilter';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { usePagination } from '@/shared/lib/hooks/usePagination/usePagination';
 import { AppParams } from '@/shared/types/route';
+import { EmptyTable } from '@/widgets/EmptyTable';
+import { TaskListHeader } from '@/widgets/TaskListHeader';
 
 const LIMIT = 10;
 
@@ -41,19 +43,43 @@ const ProjectTaskListPage: FC = () => {
 
   const { isOpenModal, openModalHandler, closeModalHandler } = useModal();
 
+  if (isLoading) {
+    return <div>... is loading</div>;
+  }
+
+  if (data && data.taskList.length === 0 && search !== '') {
+    return (
+      <Fragment>
+        <TaskListHeader className='mb-5' createTaskHandler={openModalHandler} />
+        <h2 className='pt-8 text-center text-3xl'>Ничего не найдено</h2>
+      </Fragment>
+    );
+  }
+
+  if (data && data.taskList.length === 0) {
+    return (
+      <EmptyTable
+        title='Нет задач в проекте'
+        buttonName='Создать задачу'
+        createRowHandler={openModalHandler}
+      />
+    );
+  }
+
   return (
     <Fragment>
-      <ProjectTaskListTable
-        projectId={projectId}
-        data={data?.data}
-        isLoading={isLoading}
-        currentpage={currentPage}
-        totalPages={totalPages}
-        setCurrentPage={setCurrentPage}
-        nextPageHandler={nextPageHandler}
-        prevPageHandler={prevPageHandler}
-        openCreateModalHandler={openModalHandler}
-      />
+      <TaskListHeader className='mb-5' createTaskHandler={openModalHandler} />
+      {data && data.taskList.length !== 0 && (
+        <ProjectTaskListTable
+          projectId={projectId}
+          taskList={data.taskList}
+          currentpage={currentPage}
+          totalPages={totalPages}
+          setCurrentPage={setCurrentPage}
+          nextPageHandler={nextPageHandler}
+          prevPageHandler={prevPageHandler}
+        />
+      )}
       <EditableTaskModal projectId={projectId} isOpen={isOpenModal} onClose={closeModalHandler} />
     </Fragment>
   );

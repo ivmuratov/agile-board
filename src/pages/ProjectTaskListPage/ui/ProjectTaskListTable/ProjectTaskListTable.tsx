@@ -11,9 +11,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { IconButton } from '@/shared/ui/IconButton';
 import { Table, TableColumn, TableRow } from '@/shared/ui/Table';
-import { EmptyTable } from '@/widgets/EmptyTable';
 import { PaginationContainer } from '@/widgets/PaginationContainer';
-import { TaskListHeader } from '@/widgets/TaskListHeader';
 
 const columns: TableColumn[] = [
   {
@@ -52,30 +50,24 @@ const columns: TableColumn[] = [
 ];
 
 interface ProjectTaskListTableProps {
-  className?: string;
   projectId?: string;
-  isLoading: boolean;
-  data?: TaskSchema[];
+  taskList: TaskSchema[];
   currentpage: number;
   totalPages: number;
   setCurrentPage: (page: number) => void;
   prevPageHandler: () => void;
   nextPageHandler: () => void;
-  openCreateModalHandler: () => void;
 }
 
 export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
   ({
-    className,
     projectId,
-    isLoading,
-    data,
+    taskList,
     currentpage,
     totalPages,
     setCurrentPage,
     prevPageHandler,
     nextPageHandler,
-    openCreateModalHandler,
   }) => {
     const { isOpenModal, openModalHandler, closeModalHandler } = useModal();
 
@@ -89,9 +81,9 @@ export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
       openModalHandler();
     };
 
-    const rows: TableRow[] | undefined = useMemo(
+    const rows: TableRow[] = useMemo(
       () =>
-        data?.map(task => ({
+        taskList.map(task => ({
           id: task.id,
           items: [
             {
@@ -152,50 +144,28 @@ export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
             },
           ],
         })),
-      [data],
+      [taskList],
     );
 
-    let content: JSX.Element | null;
-
-    if (isLoading) {
-      content = <div>... is loading</div>;
-    } else if (data && data.length === 0) {
-      content = (
-        <Fragment>
-          <TaskListHeader className='mb-5' createTaskHandler={openCreateModalHandler} />
-          <EmptyTable
-            title='Нет задач в проекте'
-            buttonName='Создать задачу'
-            createRowHandler={openCreateModalHandler}
+    return (
+      <Fragment>
+        <Table className='mb-5' columns={columns} rows={rows} />
+        {totalPages > 1 && (
+          <PaginationContainer
+            currentPage={currentpage}
+            totalPages={totalPages}
+            setCurrentPage={setCurrentPage}
+            prevPageHandler={prevPageHandler}
+            nextPageHandler={nextPageHandler}
           />
-        </Fragment>
-      );
-    } else if (rows && rows.length !== 0) {
-      content = (
-        <Fragment>
-          <TaskListHeader className='mb-5' createTaskHandler={openCreateModalHandler} />
-          <Table className='mb-5' columns={columns} rows={rows} />
-          {totalPages > 1 && (
-            <PaginationContainer
-              currentPage={currentpage}
-              totalPages={totalPages}
-              setCurrentPage={setCurrentPage}
-              prevPageHandler={prevPageHandler}
-              nextPageHandler={nextPageHandler}
-            />
-          )}
-          <EditableTaskModal
-            projectId={projectId}
-            taskId={taskId}
-            isOpen={isOpenModal}
-            onClose={closeModalHandler}
-          />
-        </Fragment>
-      );
-    } else {
-      content = null;
-    }
-
-    return <div className={className}>{content}</div>;
+        )}
+        <EditableTaskModal
+          projectId={projectId}
+          taskId={taskId}
+          isOpen={isOpenModal}
+          onClose={closeModalHandler}
+        />
+      </Fragment>
+    );
   },
 );

@@ -6,7 +6,7 @@ type GetTaskListArg = { projectId: string; search?: string };
 
 type GetTaskListPageSearchArg = { projectId: string; search?: string; page: number; limit: number };
 
-type GetTaskListPageSearchResp = { data: TaskSchema[]; totalCount: number };
+type GetTaskListPageSearchResp = { taskList: TaskSchema[]; totalCount: number };
 
 export const taskApi = rtkApi.injectEndpoints({
   endpoints: build => ({
@@ -20,10 +20,10 @@ export const taskApi = rtkApi.injectEndpoints({
       query: ({ projectId, search = '', page, limit = 10 }) => ({
         url: `/tasks?projectId_like=${projectId}&q=${search}&_page=${page}&_limit=${limit}`,
       }),
-      transformResponse: (data: TaskSchema[], meta) => {
+      transformResponse: (taskList: TaskSchema[], meta) => {
         const totalCount = Number(meta?.response?.headers.get('X-Total-Count'));
 
-        return { data, totalCount };
+        return { taskList, totalCount };
       },
       providesTags: ['project_tasks'],
     }),

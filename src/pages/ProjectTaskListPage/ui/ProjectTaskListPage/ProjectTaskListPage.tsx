@@ -1,10 +1,10 @@
-import { FC, Fragment } from 'react';
+import { FC, Fragment, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { ProjectTaskListTable } from '../ProjectTaskListTable/ProjectTaskListTable';
 
-import { useGetTaskListPageSearchQuery, useGetTaskListQuery } from '@/entities/Task';
+import { useGetTaskListPageSearchQuery } from '@/entities/Task';
 import { EditableTaskModal } from '@/features/EditableTaskForm';
 import { getTaskListFilterSearch } from '@/features/TaskListFilter';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
@@ -18,17 +18,26 @@ const ProjectTaskListPage: FC = () => {
 
   const search = useSelector(getTaskListFilterSearch);
 
-  const { data: allTasks } = useGetTaskListQuery({ projectId: projectId ?? '1', search });
+  const [totalCount, setTotalCount] = useState<number | undefined>();
 
   const { currentPage, totalPages, setCurrentPage, prevPageHandler, nextPageHandler } =
-    usePagination(allTasks?.length ?? 0, LIMIT);
+    usePagination(totalCount ?? 0, LIMIT);
 
-  const { data, isLoading } = useGetTaskListPageSearchQuery({
-    projectId: projectId ?? '1',
-    search,
-    page: currentPage,
-    limit: LIMIT,
-  });
+  const { data, isLoading } = useGetTaskListPageSearchQuery(
+    {
+      projectId: projectId ?? '1',
+      search,
+      page: currentPage,
+      limit: LIMIT,
+    },
+    {
+      refetchOnMountOrArgChange: true,
+    },
+  );
+
+  useEffect(() => {
+    setTotalCount(data?.totalCount);
+  }, [data?.totalCount]);
 
   const { isOpenModal, openModalHandler, closeModalHandler } = useModal();
 
@@ -36,7 +45,7 @@ const ProjectTaskListPage: FC = () => {
     <Fragment>
       <ProjectTaskListTable
         projectId={projectId}
-        data={data}
+        data={data?.data}
         isLoading={isLoading}
         currentpage={currentPage}
         totalPages={totalPages}

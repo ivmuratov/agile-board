@@ -56,9 +56,9 @@ interface ProjectTaskListTableProps {
   projectId?: string;
   isLoading: boolean;
   data?: TaskSchema[];
-  page: number;
+  currentpage: number;
   totalPages: number;
-  setPage: (page: number) => void;
+  setCurrentPage: (page: number) => void;
   prevPageHandler: () => void;
   nextPageHandler: () => void;
   openCreateModalHandler: () => void;
@@ -70,9 +70,9 @@ export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
     projectId,
     isLoading,
     data,
-    page,
+    currentpage,
     totalPages,
-    setPage,
+    setCurrentPage,
     prevPageHandler,
     nextPageHandler,
     openCreateModalHandler,
@@ -177,14 +177,13 @@ export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
           <Table className='mb-5' columns={columns} rows={rows} />
           {totalPages > 1 && (
             <PaginationContainer
-              page={page}
+              currentPage={currentpage}
               totalPages={totalPages}
-              setPage={setPage}
+              setCurrentPage={setCurrentPage}
               prevPageHandler={prevPageHandler}
               nextPageHandler={nextPageHandler}
             />
           )}
-
           <EditableTaskModal
             projectId={projectId}
             taskId={taskId}

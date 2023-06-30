@@ -25,13 +25,11 @@ const ProjectTaskListPage: FC = () => {
     },
   );
 
-  const { page, totalPages, setPage, prevPageHandler, nextPageHandler } = usePagination(
-    allTasks?.length ?? 0,
-    LIMIT,
-  );
+  const { currentPage, totalPages, setCurrentPage, prevPageHandler, nextPageHandler } =
+    usePagination(allTasks?.length ?? 0, LIMIT);
 
   const { data, isLoading } = useGetTaskListPageSearchQuery(
-    { projectId: projectId ?? '1', search, page, limit: LIMIT },
+    { projectId: projectId ?? '1', search, page: currentPage, limit: LIMIT },
     {
       refetchOnMountOrArgChange: true,
     },
@@ -45,9 +43,9 @@ const ProjectTaskListPage: FC = () => {
         projectId={projectId}
         data={data}
         isLoading={isLoading}
-        page={page}
+        currentpage={currentPage}
         totalPages={totalPages}
-        setPage={setPage}
+        setCurrentPage={setCurrentPage}
         nextPageHandler={nextPageHandler}
         prevPageHandler={prevPageHandler}
         openCreateModalHandler={openModalHandler}

@@ -1,21 +1,21 @@
 import { useState } from 'react';
 
 export const usePagination = (itemsLength: number, limit: number) => {
-  const [page, setPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(itemsLength / limit);
 
   const nextPageHandler = () => {
-    if (page < totalPages) {
-      setPage(prev => prev + 1);
+    if (currentPage < totalPages) {
+      setCurrentPage(prev => prev + 1);
     }
   };
 
   const prevPageHandler = () => {
-    if (page > 1) {
-      setPage(prev => prev - 1);
+    if (currentPage > 1) {
+      setCurrentPage(prev => prev - 1);
     }
   };
 
-  return { page, totalPages, setPage, nextPageHandler, prevPageHandler };
+  return { currentPage, totalPages, setCurrentPage, nextPageHandler, prevPageHandler };
 };

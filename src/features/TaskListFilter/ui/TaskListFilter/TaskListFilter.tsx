@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form';
 import { taskListFilterActions } from '../../model/slices/taskListFilterSlice';
 import { TaskListFilterSchema } from '../../model/types/taskListFilterSchema';
 
-import { useDebounce } from '@/shared/lib/helpers/useDebounce/useDebounce';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { Input } from '@/shared/ui/Input';
 
 interface TaskListFilterProps {

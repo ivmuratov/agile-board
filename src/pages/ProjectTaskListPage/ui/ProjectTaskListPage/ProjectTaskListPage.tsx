@@ -18,22 +18,17 @@ const ProjectTaskListPage: FC = () => {
 
   const search = useSelector(getTaskListFilterSearch);
 
-  const { data: allTasks } = useGetTaskListQuery(
-    { projectId: projectId ?? '1', search },
-    {
-      refetchOnMountOrArgChange: true,
-    },
-  );
+  const { data: allTasks } = useGetTaskListQuery({ projectId: projectId ?? '1', search });
 
   const { currentPage, totalPages, setCurrentPage, prevPageHandler, nextPageHandler } =
     usePagination(allTasks?.length ?? 0, LIMIT);
 
-  const { data, isLoading } = useGetTaskListPageSearchQuery(
-    { projectId: projectId ?? '1', search, page: currentPage, limit: LIMIT },
-    {
-      refetchOnMountOrArgChange: true,
-    },
-  );
+  const { data, isLoading } = useGetTaskListPageSearchQuery({
+    projectId: projectId ?? '1',
+    search,
+    page: currentPage,
+    limit: LIMIT,
+  });
 
   const { isOpenModal, openModalHandler, closeModalHandler } = useModal();
 

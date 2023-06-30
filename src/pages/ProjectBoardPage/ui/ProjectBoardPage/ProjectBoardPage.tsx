@@ -13,12 +13,7 @@ interface ProjectBoardPageProps {
 const ProjectBoardPage: FC<ProjectBoardPageProps> = ({ className }) => {
   const { projectId } = useParams<AppParams>();
 
-  const { data, isLoading } = useGetTaskListQuery(
-    { projectId: projectId ?? '1' },
-    {
-      refetchOnMountOrArgChange: true,
-    },
-  );
+  const { data, isLoading } = useGetTaskListQuery({ projectId: projectId ?? '1' });
 
   const toDoTasks = useMemo(() => data?.filter(task => task.status === 'to do'), [data]);
 

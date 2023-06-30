@@ -26,14 +26,14 @@
     {
       "id": 1,
       "name": "Задание ",
-      "category": "фича",
+      "category": "фичаааа",
       "author": "I. Muratov",
       "executor": "L. Lisov",
       "status": "to do",
       "type": "task",
       "priority": "0",
       "createdDate": "01.01.2023, 00:00:00",
-      "updatedDate": "23.06.2023, 17:48:08",
+      "updatedDate": "30.06.2023, 11:56:10",
       "finishedDate": "",
       "projectId": 1,
       "description": "описание"
@@ -334,6 +334,20 @@
       "updatedDate": "",
       "finishedDate": "",
       "projectId": 2
+    },
+    {
+      "name": "самая новая таска",
+      "category": "1",
+      "description": "",
+      "author": "я",
+      "executor": "",
+      "status": "in progress",
+      "type": "task",
+      "priority": "1",
+      "createdDate": "30.06.2023, 11:56:47",
+      "projectId": "1",
+      "id": 24,
+      "updatedDate": "30.06.2023, 11:57:27"
     }
   ]
 }

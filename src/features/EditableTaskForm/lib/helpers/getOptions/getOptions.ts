@@ -1,47 +1,54 @@
-import { PriorityType, StatusType, TaskType } from '@/entities/Task';
+import {
+  PriorityType,
+  StatusType,
+  TaskType,
+  getStatusTypeTaskName,
+  getTaskTypeName,
+  getPriorityTypeTaskName,
+} from '@/entities/Task';
 import { Option } from '@/shared/ui/Select';
 
 export const getStatusTypeOptions = (): Option<StatusType>[] => [
   {
     value: 'to do',
-    name: 'Сделать',
+    name: getStatusTypeTaskName('to do'),
   },
   {
     value: 'in progress',
-    name: 'В процессе',
+    name: getStatusTypeTaskName('in progress'),
   },
   {
     value: 'in review',
-    name: 'На проверке',
+    name: getStatusTypeTaskName('in review'),
   },
   {
     value: 'done',
-    name: 'Принято',
+    name: getStatusTypeTaskName('done'),
   },
 ];
 
 export const getTaskTypeOptions = (): Option<TaskType>[] => [
   {
     value: 'task',
-    name: 'Задача',
+    name: getTaskTypeName('task'),
   },
   {
     value: 'error',
-    name: 'Ошибка',
+    name: getTaskTypeName('error'),
   },
 ];
 
 export const getPriorityTypeOptions = (): Option<PriorityType>[] => [
   {
     value: '0',
-    name: 'Низкий',
+    name: getPriorityTypeTaskName('0'),
   },
   {
     value: '1',
-    name: 'Средний',
+    name: getPriorityTypeTaskName('1'),
   },
   {
     value: '2',
-    name: 'Высокий',
+    name: getPriorityTypeTaskName('2'),
   },
 ];

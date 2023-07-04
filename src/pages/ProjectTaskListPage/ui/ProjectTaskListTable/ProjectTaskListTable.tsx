@@ -1,6 +1,11 @@
 import { memo, FC, useMemo, Fragment, useState } from 'react';
 
-import { TaskSchema } from '@/entities/Task';
+import {
+  TaskSchema,
+  getTaskTypeName,
+  getPriorityTypeTaskName,
+  getStatusTypeTaskName,
+} from '@/entities/Task';
 import {
   EditTaskFormSchema,
   EditableTaskModal,
@@ -96,15 +101,15 @@ export const ProjectTaskListTable: FC<ProjectTaskListTableProps> = memo(
             },
             {
               keyId: '2',
-              value: task.type,
+              value: getTaskTypeName(task.type),
             },
             {
               keyId: '3',
-              value: task.priority,
+              value: getPriorityTypeTaskName(task.priority),
             },
             {
               keyId: '4',
-              value: task.status,
+              value: getStatusTypeTaskName(task.status),
             },
             {
               keyId: '5',

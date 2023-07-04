@@ -5,26 +5,29 @@ import { BoardColumnHeader } from '../BoardColumnHeader/BoardColumnHeader';
 
 import type { BoardColumnHeaderTheme } from '../../model/types/projectBoard';
 
-import { TaskCard, TaskSchema } from '@/entities/Task';
+import { StatusType, TaskCard, TaskSchema, getStatusTypeTaskName } from '@/entities/Task';
 
 interface BoardColumnProps {
   className?: string;
-  name: string;
+  statusTypeTask: StatusType;
   tasks?: TaskSchema[];
   theme: BoardColumnHeaderTheme;
-  droppableId: string;
 }
 
 export const BoardColumn: FC<BoardColumnProps> = memo(
-  ({ className, name, tasks, theme, droppableId }) => {
+  ({ className, statusTypeTask, tasks, theme }) => {
     if (!tasks) {
       return null;
     }
 
     return (
       <div className={`w-72 ${className}`}>
-        <BoardColumnHeader title={name} countTasks={tasks.length} theme={theme} />
-        <Droppable droppableId={droppableId}>
+        <BoardColumnHeader
+          title={getStatusTypeTaskName(statusTypeTask)}
+          countTasks={tasks.length}
+          theme={theme}
+        />
+        <Droppable droppableId={`dr-${statusTypeTask}`}>
           {(provided, snapshot) => (
             <ul className='space-y-3' ref={provided.innerRef} {...provided.droppableProps}>
               {tasks.map((task, index) => (

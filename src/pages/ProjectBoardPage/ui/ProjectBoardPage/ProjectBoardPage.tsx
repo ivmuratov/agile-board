@@ -1,4 +1,5 @@
 import { FC, useMemo } from 'react';
+import { DragDropContext } from 'react-beautiful-dnd';
 import { useParams } from 'react-router-dom';
 
 import { BoardColumn } from '../BoardColumn/BoardColumn';
@@ -28,10 +29,12 @@ const ProjectBoardPage: FC<ProjectBoardPageProps> = ({ className }) => {
 
   return (
     <div className={`flex flex-wrap space-x-4 ${className}`}>
-      <BoardColumn name='Сделать' tasks={toDoTasks} theme='blue' />
-      <BoardColumn name='В процессе' tasks={inProgressTasks} theme='yellow' />
-      <BoardColumn name='На проверке' tasks={inReviewTasks} theme='purple' />
-      <BoardColumn name='Принято' tasks={doneTasks} theme='green' />
+      <DragDropContext onDragEnd={() => console.log('drag end')}>
+        <BoardColumn droppableId='dr-1' name='Сделать' tasks={toDoTasks} theme='blue' />
+        <BoardColumn droppableId='dr-2' name='В процессе' tasks={inProgressTasks} theme='yellow' />
+        <BoardColumn droppableId='dr-3' name='На проверке' tasks={inReviewTasks} theme='purple' />
+        <BoardColumn droppableId='dr-4' name='Принято' tasks={doneTasks} theme='green' />
+      </DragDropContext>
     </div>
   );
 };

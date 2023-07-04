@@ -30,10 +30,10 @@ const ProjectBoardPage: FC<ProjectBoardPageProps> = ({ className }) => {
   return (
     <div className={`flex flex-wrap space-x-4 ${className}`}>
       <DragDropContext onDragEnd={() => console.log('drag end')}>
-        <BoardColumn statusTypeTask='to do' tasks={toDoTasks} theme='blue' />
-        <BoardColumn statusTypeTask='in progress' tasks={inProgressTasks} theme='yellow' />
-        <BoardColumn statusTypeTask='in review' tasks={inReviewTasks} theme='purple' />
-        <BoardColumn statusTypeTask='done' tasks={doneTasks} theme='green' />
+        <BoardColumn statusTypeTask='to do' tasks={toDoTasks} headerTheme='blue' />
+        <BoardColumn statusTypeTask='in progress' tasks={inProgressTasks} headerTheme='yellow' />
+        <BoardColumn statusTypeTask='in review' tasks={inReviewTasks} headerTheme='purple' />
+        <BoardColumn statusTypeTask='done' tasks={doneTasks} headerTheme='green' />
       </DragDropContext>
     </div>
   );

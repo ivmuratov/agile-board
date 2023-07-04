@@ -11,11 +11,11 @@ interface BoardColumnProps {
   className?: string;
   statusTypeTask: StatusType;
   tasks?: TaskSchema[];
-  theme: BoardColumnHeaderTheme;
+  headerTheme: BoardColumnHeaderTheme;
 }
 
 export const BoardColumn: FC<BoardColumnProps> = memo(
-  ({ className, statusTypeTask, tasks, theme }) => {
+  ({ className, statusTypeTask, tasks, headerTheme }) => {
     if (!tasks) {
       return null;
     }
@@ -25,7 +25,7 @@ export const BoardColumn: FC<BoardColumnProps> = memo(
         <BoardColumnHeader
           title={getStatusTypeTaskName(statusTypeTask)}
           countTasks={tasks.length}
-          theme={theme}
+          theme={headerTheme}
         />
         <Droppable droppableId={`dr-${statusTypeTask}`}>
           {(provided, snapshot) => (

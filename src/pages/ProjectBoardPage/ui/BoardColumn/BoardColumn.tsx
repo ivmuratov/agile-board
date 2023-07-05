@@ -27,13 +27,18 @@ export const BoardColumn: FC<BoardColumnProps> = memo(
           countTasks={tasks.length}
           theme={headerTheme}
         />
-        <Droppable droppableId={`dr-${statusTypeTask}`}>
+        <Droppable droppableId={statusTypeTask}>
           {(provided, snapshot) => (
-            <ul className='space-y-3' ref={provided.innerRef} {...provided.droppableProps}>
+            <ul
+              className={`space-y-3 ${snapshot.isDraggingOver ? 'bg-slate-200/30' : undefined}`}
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
               {tasks.map((task, index) => (
-                <Draggable key={task.id} draggableId={`dr-${task.id}`} index={index}>
+                <Draggable key={task.id} draggableId={`${task.id}`} index={index}>
                   {(provided, snapshot) => (
                     <TaskCard
+                      className={snapshot.isDragging ? 'backdrop-blur-sm' : undefined}
                       name={task.name}
                       description={task.description}
                       category={task.category}

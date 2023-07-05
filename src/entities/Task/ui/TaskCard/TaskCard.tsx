@@ -14,8 +14,8 @@ const types: Record<TaskType, ReactNode> = {
 };
 
 const themes: Record<PriorityType, string> = {
-  0: 'border-t-green-400 bg-white',
-  1: 'border-t-yellow-400 bg-white',
+  0: 'border-t-green-400 bg-slate-50/20',
+  1: 'border-t-yellow-400 bg-slate-50/20',
   2: 'border-t-red-400 bg-red-300/20',
 };
 

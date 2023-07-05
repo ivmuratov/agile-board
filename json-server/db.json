@@ -80,7 +80,7 @@
       "priority": "1",
       "projectId": "1",
       "id": 5,
-      "updatedDate": "23.06.2023, 17:48:33"
+      "updatedDate": "05.07.2023, 14:20:16"
     },
     {
       "name": "Сделать фичу",
@@ -242,13 +242,13 @@
       "description": "сделать вчера",
       "author": "я",
       "executor": "M. Jordan",
-      "status": "to do",
+      "status": "in progress",
       "type": "task",
       "priority": "1",
       "createdDate": "23.06.2023, 17:46:23",
       "projectId": "1",
       "id": 17,
-      "updatedDate": "23.06.2023, 17:48:54"
+      "updatedDate": "05.07.2023, 14:33:55"
     },
     {
       "name": "Сделать фичу",
@@ -341,13 +341,13 @@
       "description": "",
       "author": "я",
       "executor": "",
-      "status": "in progress",
+      "status": "done",
       "type": "task",
       "priority": "1",
       "createdDate": "30.06.2023, 11:56:47",
       "projectId": "1",
       "id": 24,
-      "updatedDate": "30.06.2023, 11:57:27"
+      "updatedDate": "05.07.2023, 14:23:08"
     }
   ]
 }

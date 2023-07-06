@@ -1,8 +1,10 @@
-import { FC, useMemo } from 'react';
+import { FC } from 'react';
 import { DragDropContext, OnDragEndResponder } from 'react-beautiful-dnd';
 import { useParams } from 'react-router-dom';
 
 import { usePatchTaskMutation } from '../../api/patchTaskApi';
+import { isAllowedMoveTask } from '../../lib/helpers/isAllowedMoveTask/isAllowedMoveTask';
+import { useSplitTasks } from '../../lib/hooks/useSplitTasks/useSplitTasks';
 import { BoardColumn } from '../BoardColumn/BoardColumn';
 
 import { StatusType, useGetTaskListQuery } from '@/entities/Task';
@@ -17,32 +19,23 @@ const ProjectBoardPage: FC<ProjectBoardPageProps> = ({ className }) => {
 
   const { data, isLoading } = useGetTaskListQuery({ projectId: projectId ?? '1' });
 
-  const [patchTask, resultTask] = usePatchTaskMutation();
+  const { toDoTasks, inProgressTasks, inReviewTasks, doneTasks, moveTask } = useSplitTasks(data);
 
-  const toDoTasks = useMemo(() => data?.filter(task => task.status === 'to do'), [data]);
+  const [patchTask] = usePatchTaskMutation();
 
-  const inProgressTasks = useMemo(
-    () => data?.filter(task => task.status === 'in progress'),
-    [data],
-  );
+  const dragEndHandler: OnDragEndResponder = ({ draggableId, source, destination }) => {
+    if (projectId && destination) {
+      const taskId = draggableId;
+      const fromStatus = source.droppableId as StatusType;
+      const toStatus = destination.droppableId as StatusType;
 
-  const inReviewTasks = useMemo(() => data?.filter(task => task.status === 'in review'), [data]);
-
-  const doneTasks = useMemo(() => data?.filter(task => task.status === 'done'), [data]);
-
-  const dragEndHandler: OnDragEndResponder = async result => {
-    if (projectId) {
-      const taskId = result.draggableId;
-      const fromStatus = result.source.droppableId as StatusType;
-      const toStatus = result.destination?.droppableId as StatusType;
-
-      if (fromStatus !== toStatus) {
-        const response = await patchTask({
+      if (isAllowedMoveTask(fromStatus, toStatus)) {
+        moveTask(taskId, fromStatus, toStatus);
+        patchTask({
           id: taskId,
           projectId,
           status: toStatus,
-        }).unwrap();
-        console.log(response);
+        });
       }
     }
   };

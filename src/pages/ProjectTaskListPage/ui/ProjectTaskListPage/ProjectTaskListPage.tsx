@@ -61,7 +61,7 @@ const ProjectTaskListPage: FC = () => {
     return (
       <Fragment>
         <TaskListHeader className='mb-5' createTaskHandler={openModalHandler} />
-        <h2 className='pt-8 text-center text-3xl'>Ничего не найдено</h2>
+        <h2 className='pt-8 text-center text-4xl'>Ничего не найдено</h2>
       </Fragment>
     );
   }

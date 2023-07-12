@@ -21,7 +21,7 @@ export const TaskListFilter: FC<TaskListFilterProps> = memo(({ className }) => {
     dispatch(taskListFilterActions.setName(watch('search', '')));
   };
 
-  useDebounce(setName, 800)();
+  useDebounce(setName, 600);
 
   return <Input className={className} placeholder='Поиск' {...register('search')} />;
 });

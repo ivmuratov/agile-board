@@ -7,17 +7,13 @@ import { ProjectHeader } from '../ProjectHeader/ProjectHeader';
 
 import type { AppParams } from '@/shared/types/route';
 
-interface ProjectPageProps {
-  className?: string;
-}
-
-const ProjectPage: FC<ProjectPageProps> = ({ className }) => {
+const ProjectPage: FC = () => {
   const { projectId } = useParams<AppParams>();
 
   const { data } = useGetProjectByIdQuery(projectId ?? skipToken);
 
   return (
-    <main className={className}>
+    <main>
       {projectId && data && <ProjectHeader projectTitle={data.name} projectId={projectId} />}
       {data && <Outlet />}
     </main>

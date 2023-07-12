@@ -10,11 +10,7 @@ import { BoardColumn } from '../BoardColumn/BoardColumn';
 import { StatusType, useGetTaskListQuery } from '@/entities/Task';
 import { AppParams } from '@/shared/types/route';
 
-interface ProjectBoardPageProps {
-  className?: string;
-}
-
-const ProjectBoardPage: FC<ProjectBoardPageProps> = ({ className }) => {
+const ProjectBoardPage: FC = () => {
   const { projectId } = useParams<AppParams>();
 
   const { data, isLoading } = useGetTaskListQuery({ projectId: projectId ?? '1' });
@@ -41,7 +37,7 @@ const ProjectBoardPage: FC<ProjectBoardPageProps> = ({ className }) => {
   };
 
   return (
-    <div className={`flex flex-wrap space-x-4 ${className}`}>
+    <div className='flex flex-wrap space-x-4'>
       <DragDropContext onDragEnd={dragEndHandler}>
         <BoardColumn statusTypeTask='to do' tasks={toDoTasks} headerTheme='blue' />
         <BoardColumn statusTypeTask='in progress' tasks={inProgressTasks} headerTheme='yellow' />

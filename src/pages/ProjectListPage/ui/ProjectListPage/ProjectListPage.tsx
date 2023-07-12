@@ -8,11 +8,7 @@ import { CreateProjectModal } from '@/features/CreateProjectForm';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { EmptyTable } from '@/widgets/EmptyTable';
 
-interface ProjectListPageProps {
-  className?: string;
-}
-
-const ProjectListPage: FC<ProjectListPageProps> = ({ className }) => {
+const ProjectListPage: FC = () => {
   const { data, isLoading } = useGetProjectListQuery();
 
   const { isOpenModal, openModalHandler, closeModalHandler } = useModal();
@@ -34,7 +30,7 @@ const ProjectListPage: FC<ProjectListPageProps> = ({ className }) => {
   }
 
   return (
-    <main className={className}>
+    <main>
       <ProjectListHeader
         className='mb-5'
         projectList={data}

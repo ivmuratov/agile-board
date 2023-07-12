@@ -11,11 +11,11 @@ const NotFoundPage: FC = () => {
   };
 
   return (
-    <div className='pt-20 text-center'>
+    <main className='pt-20 text-center'>
       <h2 className='mb-7 text-8xl'>404</h2>
       <p className='mb-7 text-xl'>СТРАНИЦА НЕ НАЙДЕНА</p>
       <Button onClick={returnBack}>Назад</Button>
-    </div>
+    </main>
   );
 };
 

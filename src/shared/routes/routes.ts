@@ -1,3 +1,5 @@
+import { To } from 'react-router-dom';
+
 export enum AppRoutes {
   MAIN = 'main',
   PROJECTS = 'projects',
@@ -19,6 +21,9 @@ export const getAppRouteMain = () => '/';
 export const getAppRouteProjects = () => '/projects';
 
 export const getAppRouteProject = (projectId: string) => `/projects/${projectId}`;
+
+export const getProjectRoutes = (projectId: string, route?: To) =>
+  route ? `/projects/${projectId}/${route}` : getAppRouteProject(projectId);
 
 export const getProjectRouteBoard = () => `board`;
 

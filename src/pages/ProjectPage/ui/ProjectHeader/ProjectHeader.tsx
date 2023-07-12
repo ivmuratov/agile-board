@@ -3,6 +3,13 @@ import { NavLink } from 'react-router-dom';
 
 import type { AppNavLink } from '@/shared/types/route';
 
+import {
+  getProjectRouteBoard,
+  getProjectRouteTasks,
+  getProjectRouteTeam,
+  getProjectRoutes,
+} from '@/shared/routes/routes';
+
 const links: Array<AppNavLink> = [
   {
     name: 'Проект',
@@ -11,15 +18,15 @@ const links: Array<AppNavLink> = [
   },
   {
     name: 'Доска',
-    to: '/board',
+    to: getProjectRouteBoard(),
   },
   {
     name: 'Команда',
-    to: '/team',
+    to: getProjectRouteTeam(),
   },
   {
     name: 'Список задач',
-    to: '/tasks',
+    to: getProjectRouteTasks(),
   },
 ];
 
@@ -38,7 +45,7 @@ export const ProjectHeader: FC<ProjectHeaderProps> = memo(
           {links.map(({ name, to, end }) => (
             <li key={name}>
               <NavLink
-                to={`/projects/${projectId}${to}`}
+                to={getProjectRoutes(projectId, to)}
                 end={end}
                 className={({ isActive }) =>
                   isActive

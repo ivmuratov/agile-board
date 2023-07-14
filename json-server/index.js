@@ -10,7 +10,7 @@ const middlewares = jsonServer.defaults();
 
 server.use(async (req, res, next) => {
   await new Promise(res => {
-    setTimeout(res, 700);
+    setTimeout(res, 1000);
   });
   next();
 });

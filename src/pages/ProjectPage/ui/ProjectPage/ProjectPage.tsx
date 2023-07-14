@@ -1,5 +1,5 @@
 import { skipToken } from '@reduxjs/toolkit/dist/query';
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 
 import { useGetProjectByIdQuery } from '../../api/projectByIdApi';
@@ -12,12 +12,18 @@ const ProjectPage: FC = () => {
 
   const { data } = useGetProjectByIdQuery(projectId ?? skipToken);
 
-  return (
-    <main>
-      {projectId && data && <ProjectNavbar projectTitle={data.name} projectId={projectId} />}
-      {data && <Outlet />}
-    </main>
-  );
+  let content: JSX.Element | null = null;
+
+  if (projectId && data) {
+    content = (
+      <Fragment>
+        <ProjectNavbar projectTitle={data.name} projectId={projectId} />
+        <Outlet />
+      </Fragment>
+    );
+  }
+
+  return <main>{content}</main>;
 };
 
 export default ProjectPage;

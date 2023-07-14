@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { NavLink } from 'react-router-dom';
+
+import { NavbarItem } from '../NavbarItem/NavbarItem';
 
 import HomeIcon from '@/shared/assets/home.svg';
 import ProjectsIcon from '@/shared/assets/info.svg';
@@ -30,18 +31,7 @@ export const Navbar: FC = () => (
         <nav className='h-full'>
           <ul className='flex h-full'>
             {links.map(({ Icon, to }) => (
-              <li key={Icon.name} className='h-full'>
-                <NavLink
-                  to={to}
-                  className={({ isActive }) =>
-                    `flex h-full items-center p-5 transition-colors hover:bg-violet-200/50 ${
-                      isActive && 'bg-violet-100/50 border-b-2 border-b-blue-500'
-                    }`
-                  }
-                >
-                  {({ isActive }) => <Icon fill='#374151' opacity={isActive ? '0.8' : '0.6'} />}
-                </NavLink>
-              </li>
+              <NavbarItem key={Icon.name} className='h-full' Icon={Icon} to={to} />
             ))}
           </ul>
         </nav>

@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 
 import { useGetProjectByIdQuery } from '../../api/projectByIdApi';
-import { ProjectHeader } from '../ProjectHeader/ProjectHeader';
+import { ProjectNavbar } from '../ProjectNavbar/ProjectNavbar';
 
 import type { AppParams } from '@/shared/types/route';
 
@@ -14,7 +14,7 @@ const ProjectPage: FC = () => {
 
   return (
     <main>
-      {projectId && data && <ProjectHeader projectTitle={data.name} projectId={projectId} />}
+      {projectId && data && <ProjectNavbar projectTitle={data.name} projectId={projectId} />}
       {data && <Outlet />}
     </main>
   );

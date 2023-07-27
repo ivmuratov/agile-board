@@ -39,10 +39,10 @@ const ProjectBoardPage: FC = () => {
   return (
     <div className='flex flex-wrap space-x-4'>
       <DragDropContext onDragEnd={dragEndHandler}>
-        <BoardColumn statusTypeTask='to do' tasks={toDoTasks} headerTheme='blue' />
-        <BoardColumn statusTypeTask='in progress' tasks={inProgressTasks} headerTheme='yellow' />
-        <BoardColumn statusTypeTask='in review' tasks={inReviewTasks} headerTheme='purple' />
-        <BoardColumn statusTypeTask='done' tasks={doneTasks} headerTheme='green' />
+        <BoardColumn statusTypeTask='to do' tasks={toDoTasks} />
+        <BoardColumn statusTypeTask='in progress' tasks={inProgressTasks} />
+        <BoardColumn statusTypeTask='in review' tasks={inReviewTasks} />
+        <BoardColumn statusTypeTask='done' tasks={doneTasks} />
       </DragDropContext>
     </div>
   );

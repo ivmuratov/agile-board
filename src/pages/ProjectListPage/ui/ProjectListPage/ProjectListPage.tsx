@@ -3,10 +3,16 @@ import { FC } from 'react';
 import { ProjectListHeader } from '../ProjectListHeader/ProjectListHeader';
 import { ProjectListTable } from '../ProjectListTable/ProjectListTable';
 
-import { useGetProjectListQuery } from '@/entities/Project';
+import { ProjectSchema, useGetProjectListQuery } from '@/entities/Project';
 import { CreateProjectModal } from '@/features/CreateProjectForm';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { EmptyTable } from '@/widgets/EmptyTable';
+
+const isEmptyProjectList = (data?: ProjectSchema[]) => {
+  if (data && data.length === 0) return true;
+
+  return false;
+};
 
 const ProjectListPage: FC = () => {
   const { data, isLoading } = useGetProjectListQuery();
@@ -33,7 +39,7 @@ const ProjectListPage: FC = () => {
     <main>
       <ProjectListHeader
         className='mb-5'
-        isProjectList={!!data}
+        isEmptyProjectList={isEmptyProjectList(data)}
         createProjectHandler={openModalHandler}
       />
       {content}

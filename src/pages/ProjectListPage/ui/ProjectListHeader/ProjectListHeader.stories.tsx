@@ -14,10 +14,10 @@ const Template: ComponentStory<typeof ProjectListHeader> = args => <ProjectListH
 
 export const WithProjectList = Template.bind({});
 WithProjectList.args = {
-  isProjectList: true,
+  isEmptyProjectList: false,
 };
 
 export const WithoutProjectList = Template.bind({});
 WithoutProjectList.args = {
-  isProjectList: false,
+  isEmptyProjectList: true,
 };

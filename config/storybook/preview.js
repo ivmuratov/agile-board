@@ -1,3 +1,5 @@
+import { addDecorator } from '@storybook/react';
+import RouterDecorator from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
 import '../../src/index';
 
 export const parameters = {
@@ -9,3 +11,5 @@ export const parameters = {
     },
   },
 };
+
+addDecorator(RouterDecorator);

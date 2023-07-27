@@ -13,4 +13,3 @@ export default {
 const Template: ComponentStory<typeof Navbar> = args => <Navbar {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {};

@@ -12,5 +12,12 @@ export default {
 
 const Template: ComponentStory<typeof ProjectListHeader> = args => <ProjectListHeader {...args} />;
 
-export const Normal = Template.bind({});
-Normal.args = {};
+export const WithProjectList = Template.bind({});
+WithProjectList.args = {
+  isProjectList: true,
+};
+
+export const WithoutProjectList = Template.bind({});
+WithoutProjectList.args = {
+  isProjectList: false,
+};

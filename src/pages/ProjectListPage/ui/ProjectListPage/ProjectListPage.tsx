@@ -33,7 +33,7 @@ const ProjectListPage: FC = () => {
     <main>
       <ProjectListHeader
         className='mb-5'
-        projectList={data}
+        isProjectList={!!data}
         createProjectHandler={openModalHandler}
       />
       {content}

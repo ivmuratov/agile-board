@@ -60,32 +60,42 @@ npm run start:dev - запуск сервера + frontend проекта в dev
 Пример:
 
 ```typescript jsx
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Button, ButtonSize, ButtonTheme } from './Button';
-import { Theme } from '@/shared/const/theme';
+import { Button } from './Button';
 
 export default {
-    title: 'shared/Button',
-    component: Button,
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
+  title: 'shared/Button',
+  component: Button,
+  argTypes: {
+    backgroundColor: { control: 'color' },
+  },
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof Button> = args => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-    children: 'Text',
+  theme: 'primary',
+  children: 'Primary',
 };
 
-export const Clear = Template.bind({});
-Clear.args = {
-    children: 'Text',
-    theme: ButtonTheme.CLEAR,
+export const Secondary = Template.bind({});
+Secondary.args = {
+  theme: 'secondary',
+  children: 'Secondary',
+};
+
+export const Success = Template.bind({});
+Success.args = {
+  theme: 'success',
+  children: 'Success',
+};
+
+export const Danger = Template.bind({});
+Danger.args = {
+  theme: 'danger',
+  children: 'Danger',
 };
 ```
 ----

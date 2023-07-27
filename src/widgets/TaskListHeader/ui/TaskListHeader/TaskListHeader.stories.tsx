@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { TaskListHeader } from './TaskListHeader';
 
 export default {
-  title: 'shared/TaskListHeader',
+  title: 'widgets/TaskListHeader',
   component: TaskListHeader,
   argTypes: {
     backgroundColor: { control: 'color' },

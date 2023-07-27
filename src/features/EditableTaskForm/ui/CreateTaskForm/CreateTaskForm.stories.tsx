@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import CreateTaskForm from './CreateTaskForm';
 
 export default {
-  title: 'features/CreateTaskForm',
+  title: 'features/EditableTaskForm/CreateTaskForm',
   component: CreateTaskForm,
   argTypes: {
     backgroundColor: { control: 'color' },

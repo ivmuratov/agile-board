@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ProjectNavbar } from './ProjectNavbar';
 
 export default {
-  title: 'pages/ProjectNavbar',
+  title: 'pages/ProjectPage/ProjectNavbar',
   component: ProjectNavbar,
   argTypes: {
     backgroundColor: { control: 'color' },

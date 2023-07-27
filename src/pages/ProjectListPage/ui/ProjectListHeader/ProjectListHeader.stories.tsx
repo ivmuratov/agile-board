@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ProjectListHeader } from './ProjectListHeader';
 
 export default {
-  title: 'shared/ProjectListHeader',
+  title: 'pages/ProjectListPage/ProjectListHeader',
   component: ProjectListHeader,
   argTypes: {
     backgroundColor: { control: 'color' },

@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { BoardColumnHeader } from './BoardColumnHeader';
 
 export default {
-  title: 'shared/BoardColumnHeader',
+  title: 'pages/ProjectBoardPage/BoardColumnHeader',
   component: BoardColumnHeader,
   argTypes: {
     backgroundColor: { control: 'color' },

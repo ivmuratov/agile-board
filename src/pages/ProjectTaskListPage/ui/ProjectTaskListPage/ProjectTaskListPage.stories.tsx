@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import ProjectTaskListPage from './ProjectTaskListPage';
 
 export default {
-  title: 'pages/ProjectTaskListPage',
+  title: 'pages/ProjectTaskListPage/ProjectTaskListPage',
   component: ProjectTaskListPage,
   argTypes: {
     backgroundColor: { control: 'color' },

@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ProjectListTable } from './ProjectListTable';
 
 export default {
-  title: 'shared/ProjectListTable',
+  title: 'pages/ProjectListPage/ProjectListTable',
   component: ProjectListTable,
   argTypes: {
     backgroundColor: { control: 'color' },

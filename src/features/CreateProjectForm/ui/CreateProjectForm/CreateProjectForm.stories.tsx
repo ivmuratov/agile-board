@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import CreateProjectForm from './CreateProjectForm';
 
 export default {
-  title: 'shared/CreateProjectForm',
+  title: 'features/CreateProjectForm',
   component: CreateProjectForm,
   argTypes: {
     backgroundColor: { control: 'color' },

@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { BoardColumn } from './BoardColumn';
 
 export default {
-  title: 'shared/BoardColumn',
+  title: 'pages/ProjectBoardPage/BoardColumn',
   component: BoardColumn,
   argTypes: {
     backgroundColor: { control: 'color' },

@@ -45,7 +45,7 @@ export const TaskCard: FC<TaskCardProps> = memo(
     provided,
     innerRef,
   }) => (
-    <li
+    <div
       className={`space-y-2 rounded-lg border-t-4 px-4 py-2 shadow-sm hover:shadow-md ${themes[priority]} ${className}`}
       ref={innerRef}
       {...provided?.draggableProps}
@@ -63,6 +63,6 @@ export const TaskCard: FC<TaskCardProps> = memo(
           {executor && <AvatarIcon fill='#374151' opacity='0.6' />}
         </div>
       </div>
-    </li>
+    </div>
   ),
 );

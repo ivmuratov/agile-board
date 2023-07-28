@@ -11,6 +11,16 @@ export default {
     backgroundColor: { control: 'color' },
   },
   decorators: [StoreDecorator],
+  parameters: {
+    mockData: [
+      {
+        url: `${__API__}/projects`,
+        method: 'GET',
+        status: 200,
+        response: [],
+      },
+    ],
+  },
 } as ComponentMeta<typeof ProjectListPage>;
 
 const Template: ComponentStory<typeof ProjectListPage> = args => <ProjectListPage {...args} />;

@@ -13,6 +13,7 @@ module.exports = {
         },
       },
     },
+    'storybook-addon-mock',
   ],
   framework: '@storybook/react',
   core: {

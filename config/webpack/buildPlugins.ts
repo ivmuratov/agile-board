@@ -3,12 +3,12 @@ import CopyPlugin from 'copy-webpack-plugin';
 import ESLintPlugin from 'eslint-webpack-plugin';
 import HtmlPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { WebpackPluginInstance, ProgressPlugin, ProvidePlugin } from 'webpack';
+import { WebpackPluginInstance, ProgressPlugin, ProvidePlugin, DefinePlugin } from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import { BuildOptions } from './types/config';
 
-export const buildPlugins = ({ paths, analyze }: BuildOptions): WebpackPluginInstance[] => [
+export const buildPlugins = ({ paths, analyze, apiUrl }: BuildOptions): WebpackPluginInstance[] => [
   new ProgressPlugin(),
   new HtmlPlugin({
     template: paths.html,
@@ -24,6 +24,9 @@ export const buildPlugins = ({ paths, analyze }: BuildOptions): WebpackPluginIns
         to: `${paths.build}/assets`,
       },
     ],
+  }),
+  new DefinePlugin({
+    __API__: JSON.stringify(apiUrl),
   }),
   new MiniCssExtractPlugin({
     filename: 'static/css/[name].[contenthash].css',

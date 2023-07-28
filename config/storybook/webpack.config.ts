@@ -1,6 +1,8 @@
 /* eslint-disable no-param-reassign */
 import path from 'path';
 
+import { DefinePlugin } from 'webpack';
+
 import { buildSvgLoader } from '../webpack/loaders/buildSvgLoader';
 import { BuildPaths } from '../webpack/types/config';
 
@@ -30,6 +32,11 @@ export default ({ config }: { config: Configuration }) => {
     return rule;
   });
   config!.module!.rules.push(buildSvgLoader());
+  config!.plugins!.push(
+    new DefinePlugin({
+      __API__: JSON.stringify('https://testapi.com'),
+    }),
+  );
 
   return config;
 };

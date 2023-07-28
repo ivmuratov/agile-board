@@ -51,7 +51,8 @@
   },
   "globals": {
     "JSX": "readonly",
-    "__dirname": "readonly"
+    "__dirname": "readonly",
+    "__API__": true
   },
   "rules": {
     "prettier/prettier": "error",
@@ -67,6 +68,7 @@
     "no-shadow": "off",    
     "no-unused-vars": "off",
     "no-plusplus": "off",
+    "no-underscore-dangle": "off",
     "react/prop-types": "off",
     "react/require-default-props": "off",
     "react/function-component-definition": "off",
